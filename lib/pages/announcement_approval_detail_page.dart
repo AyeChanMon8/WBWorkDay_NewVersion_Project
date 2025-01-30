@@ -160,7 +160,7 @@ class AnnouncementApprovalDetails extends StatelessWidget {
 
                                       InkWell(onTap:(){
                                         _createFileFromString(announcement.attachment_id![fileIndex].datas.toString()).then((path) async{
-                                          await requestManageExternalStoragePermission();
+                                          // await requestManageExternalStoragePermission();
                                           await OpenFile.open(path);
                                           print(path.toString());
                                           // Navigator.push(
@@ -231,12 +231,33 @@ class AnnouncementApprovalDetails extends StatelessWidget {
   }
   Future<String> _createFileFromString(String encodedStr) async {
     //final encodedStr = "put base64 encoded string here";
+    
     Uint8List bytes = base64.decode(encodedStr);
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = File(
-        "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+    if (Platform.isAndroid) {
+    // String dir = (await getApplicationDocumentsDirectory()).path;
+    final directory = await getExternalStorageDirectory();
+
+        if (directory == null) {
+          print('Could not get external storage directory');
+          return "";
+        }
+
+        final downloadFolder = Directory('${directory.path}/Download');
+        if (!await downloadFolder.exists()) {
+          await downloadFolder.create(recursive: true);
+        }
+    // File file = File(
+    //     "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+    final file =
+            File('${downloadFolder.path}/'+ DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
     await file.writeAsBytes(bytes);
     return file.path.toString();
+    }else{
+       var path = await getApplicationDocumentsDirectory();
+      final file = new File('${path.path}/'+ DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+      await file.writeAsBytes(bytes, flush: true);
+      return file.path.toString();
+    }
   }
   Future<void> requestManageExternalStoragePermission() async {
     if (Platform.isAndroid && await Permission.manageExternalStorage.isDenied) {

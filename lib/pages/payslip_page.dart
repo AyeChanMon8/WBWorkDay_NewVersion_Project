@@ -887,28 +887,38 @@ class _PaySlipPageState extends State<PaySlipPage> {
     document.dispose();
 
      if (Platform.isAndroid) {
-      var status = await Permission.storage.status;
-      if (!status.isGranted) {
-        print("request");
-        await Permission.storage.request();
-      }
+      // var status = await Permission.storage.status;
+      // if (!status.isGranted) {
+      //   print("request");
+      //   await Permission.storage.request();
+      // }
       // the downloads folder path
       // String path = await ExtStorage.getExternalStoragePublicDirectory(
       //     ExtStorage.DIRECTORY_DOWNLOADS);
       String path = '';
+      final directory = await getExternalStorageDirectory();
 
-      Directory? externalDirectory = Directory('/storage/emulated/0/Download');
-      if (externalDirectory != null) {
-        path = externalDirectory.path;
+        if (directory == null) {
+          print('Could not get external storage directory');
+          return;
+        }
+
+        final downloadFolder = Directory('${directory.path}/Download');
+        if (!await downloadFolder.exists()) {
+          await downloadFolder.create(recursive: true);
+        }
+      // Directory? externalDirectory = Directory('/storage/emulated/0/Download');
+      // if (externalDirectory != null) {
+        path = downloadFolder.path;
         String fullPath = "$path/$fileName";
         File file = File(fullPath);
         await file.writeAsBytes(bytes, flush: true);
-        await requestManageExternalStoragePermission();
+        // await requestManageExternalStoragePermission();
   final result = await OpenFile.open(fullPath);
         // OpenFile.open(fullPath);
-      } else {
-        print('External Storage Directory not available');
-      }
+      // } else {
+      //   print('External Storage Directory not available');
+      // }
     } else {
       var path = await getApplicationDocumentsDirectory();
       final file = new File('${path?.path}/$fileName');

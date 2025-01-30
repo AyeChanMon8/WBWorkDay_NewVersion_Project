@@ -188,7 +188,7 @@ class RewardController extends GetxController {
                 )),
             barrierDismissible: false));
     File? file = await employeeService!.downloadReward(reward.id, 'reward${reward.id}');
-     await requestManageExternalStoragePermission();
+    //  await requestManageExternalStoragePermission();
      await OpenFile.open(file!.path);
     Get.back();
     //Get.to(PdfView(file.path,'reward${reward.id}'));

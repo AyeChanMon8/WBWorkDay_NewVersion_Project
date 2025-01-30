@@ -29,11 +29,29 @@ class RewardsDetailsPage extends StatelessWidget {
   final box = GetStorage();
   Future<String> _createFileFromString(String encodedStr) async {
     Uint8List bytes = base64.decode(encodedStr);
-    String dir = (await getApplicationDocumentsDirectory()).path;
+    if (Platform.isAndroid) {
+    final directory = await getExternalStorageDirectory();
+
+        if (directory == null) {
+          print('Could not get external storage directory');
+          return "";
+        }
+
+        final downloadFolder = Directory('${directory.path}/Download');
+        if (!await downloadFolder.exists()) {
+          await downloadFolder.create(recursive: true);
+        }
+    // String dir = (await getApplicationDocumentsDirectory()).path;
     File file = File(
-        "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+        "${downloadFolder.path}/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
     await file.writeAsBytes(bytes);
     return file.path.toString();
+    }else{
+      var path = await getApplicationDocumentsDirectory();
+      final file = new File('${path.path}/' + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+      await file.writeAsBytes(bytes, flush: true);
+      return file.path.toString();
+    }
   }
 
   @override
@@ -343,7 +361,7 @@ class RewardsDetailsPage extends StatelessWidget {
                                       onTap: () async {
                                         _createFileFromString(data.attachment)
                                             .then((path) async {
-                                          await requestManageExternalStoragePermission();
+                                          // await requestManageExternalStoragePermission();
                                           await OpenFile.open(path);
                                         });
                                         log('attachment => ${data.attachment}');

@@ -69,7 +69,7 @@ class PocketLine {
 
     return PocketLine(
         id: map['id'],
-        date: map['date'],
+        date: map['date'] ?? "",
         categ_id: CategoryModel.fromMap(map['categ_id']),
         product_id: ProductModel.fromMap(map['product_id']),
         description: map['description']?? "",

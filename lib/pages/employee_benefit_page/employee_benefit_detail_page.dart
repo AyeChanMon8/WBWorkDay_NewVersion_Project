@@ -26,10 +26,29 @@ class EmployeeBenefitDetailsPage extends StatelessWidget {
   Future<String> _createFileFromString(String encodedStr,String name) async {
     //final encodedStr = "put base64 encoded string here";
     Uint8List bytes = base64.decode(encodedStr);
-    String dir = (await getApplicationDocumentsDirectory()).path;File file = File(
-      "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+    if (Platform.isAndroid) {
+    final directory = await getExternalStorageDirectory();
+
+        if (directory == null) {
+          print('Could not get external storage directory');
+          return "";
+        }
+
+        final downloadFolder = Directory('${directory.path}/Download');
+        if (!await downloadFolder.exists()) {
+          await downloadFolder.create(recursive: true);
+        }
+    // String dir = (await getApplicationDocumentsDirectory()).path;
+    File file = File(
+      "${downloadFolder.path}/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
     await file.writeAsBytes(bytes);
     return file.path.toString();
+    }else{
+       var path = await getApplicationDocumentsDirectory();
+      final file = new File('${path.path}/' + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+      await file.writeAsBytes(bytes, flush: true);
+      return file.path.toString();
+    }
   }
 
   @override
@@ -301,7 +320,7 @@ class EmployeeBenefitDetailsPage extends StatelessWidget {
                           ):
                           _createFileFromString(controller.employeeBenefitList.value[dindex].attachment_ids[fileIndex].datas.toString(),controller.employeeBenefitList.value[dindex].attachment_ids[fileIndex].name.toString()).then((path) async{
                             print("FilePath");
-                            await requestManageExternalStoragePermission();
+                            // await requestManageExternalStoragePermission();
                             await OpenFile.open(path);
                              print(path.toString());
                           });

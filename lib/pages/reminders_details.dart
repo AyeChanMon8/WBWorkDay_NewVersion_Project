@@ -35,11 +35,29 @@ class RemindersDetails extends StatelessWidget {
   Future<String> _createFileFromString(String encodedStr) async {
     //final encodedStr = "put base64 encoded string here";
     Uint8List bytes = base64.decode(encodedStr);
-    String dir = (await getApplicationDocumentsDirectory()).path;
+    if (Platform.isAndroid) {
+    final directory = await getExternalStorageDirectory();
+
+        if (directory == null) {
+          print('Could not get external storage directory');
+          return "";
+        }
+
+        final downloadFolder = Directory('${directory.path}/Download');
+        if (!await downloadFolder.exists()) {
+          await downloadFolder.create(recursive: true);
+        }
+    // String dir = (await getApplicationDocumentsDirectory()).path;
     File file = File(
-        "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+        "${downloadFolder.path}/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
     await file.writeAsBytes(bytes);
-    return file.path.toString();
+    return file.path.toString();}
+    else{
+       var path = await getApplicationDocumentsDirectory();
+      final file = new File('${path.path}/' + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf");
+      await file.writeAsBytes(bytes, flush: true);
+      return file.path.toString();
+    }
   }
   Widget pdfView(String pathPDF){
     print("pdfView");
@@ -117,7 +135,7 @@ class RemindersDetails extends StatelessWidget {
                           ):
                           _createFileFromString(controller.reminderList.value[index].attachment_ids![fileIndex].attach_file.toString()).then((path) async{
                             print("FilePath");
-                            await requestManageExternalStoragePermission();
+                            // await requestManageExternalStoragePermission();
                             await OpenFile.open(path);
                              print(path.toString());
                           });

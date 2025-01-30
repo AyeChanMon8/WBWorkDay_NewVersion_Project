@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 import 'dart:io';
 import 'dart:io' as Io;
@@ -12,6 +10,7 @@ import 'package:getwidget/components/toast/gf_toast.dart';
 import 'package:intl/intl.dart';
 import 'package:mime/mime.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -33,12 +32,51 @@ class AppUtils {
     return mimeType!.startsWith('image/');
   }
 
+  // static Future<File?> createPDF(
+  //     String pdfString, String fileName, String type) async {
+  //   try {
+  //     if (pdfString.isNotEmpty) {
+  //       var bytes = base64Decode(pdfString.replaceAll('\n', ''));
+  //       String dir = (await getExternalStorageDirectory())!.path;
+  //       var typeValue = (type.split('/').last);
+  //       var doted = ".";
+  //       var file_name = "";
+
+  //       if (fileName.contains(typeValue)) {
+  //         file_name = (fileName.split(typeValue).first);
+  //         file_name += typeValue;
+  //       } else {
+  //         file_name = fileName + doted + typeValue;
+  //       }
+
+  //       String fullPath = "$dir/$file_name";
+  //       final File file = File(fullPath);
+  //       await file.writeAsBytes(bytes);
+  //       return file;
+  //     }
+  //   } catch (error) {}
+  // }
+
   static Future<File?> createPDF(
       String pdfString, String fileName, String type) async {
+        print("typee>>>>>"+type);
+        print("fileNameeee>>>>"+fileName);
     try {
       if (pdfString.isNotEmpty) {
         var bytes = base64Decode(pdfString.replaceAll('\n', ''));
-        String dir = (await getApplicationDocumentsDirectory()).path;
+        if (Platform.isAndroid) {
+        // Get the download folder directory using path_provider
+        final directory = await getExternalStorageDirectory();
+
+        if (directory == null) {
+          print('Could not get external storage directory');
+          return null;
+        }
+
+        final downloadFolder = Directory('${directory.path}/Download');
+        if (!await downloadFolder.exists()) {
+          await downloadFolder.create(recursive: true);
+        }
         var typeValue = (type.split('/').last);
         var doted = ".";
         var file_name = "";
@@ -50,12 +88,32 @@ class AppUtils {
           file_name = fileName + doted + typeValue;
         }
 
-        String fullPath = "$dir/$file_name";
-        final File file = File(fullPath);
+        final file =
+            File('${downloadFolder.path}/$file_name'); // Set the file name
         await file.writeAsBytes(bytes);
+
+        print("File saved to: ${file.path}");
+
+        // Open the file after downloading
         return file;
+        }else{
+           var path = await getApplicationDocumentsDirectory();
+      final file = new File('${path.path}/$fileName');
+      await file.writeAsBytes(bytes, flush: true);
+      return file;
+        }
       }
     } catch (error) {}
+  }
+
+  Future<void> openDownloadedFile(String filePath) async {
+    final result = await OpenFile.open(filePath);
+    print(result.type);
+    // if (result.type == ResultType.done) {
+    //   print("File opened successfully");
+    // } else {
+    //   print("Failed to open file: ${result.message}");
+    // }
   }
 
   static double getFileSizeInKB(File file) {
@@ -85,9 +143,9 @@ class AppUtils {
 
   static String onemonthago() {
     var now = new DateTime.now();
-    print("now date >>"+now.toString());
+    print("now date >>" + now.toString());
     var oldDate = now.subtract(Duration(days: 30));
-    print("oldDate >>"+oldDate.toString());
+    print("oldDate >>" + oldDate.toString());
     return formatDate(
         oldDate, [yyyy, '-', mm, '-', dd, ' ', hh, ':', nn, ':', 'ss']);
   }
@@ -179,7 +237,7 @@ class AppUtils {
   }
 
   static void showConfirmCancelDialog(
-      String title, String msg, Function onConfirm, Function onCancel) async{
+      String title, String msg, Function onConfirm, Function onCancel) async {
     Get.defaultDialog(
         title: title,
         content: Text(msg),
@@ -252,23 +310,24 @@ class AppUtils {
     }
     return formatted_date;
   }
+
   static String changeDateFormatAndAddDate(String date) {
     var formatted_date = "";
-    var today= DateTime.parse(date);
-    var checkDate = int.parse(DateFormat("dd").format(DateTime.parse(date))) ;
-    var checkHour =int.parse( DateFormat("HH").format(DateTime.parse(date)));
-    print("checkDate $checkDate $checkHour" );
-    if(checkDate != 31 || checkDate !=30 ){//&& checkDate != 1
-      if(checkHour >10 && checkHour <18 ){
-        if(checkHour == 17){
-          today =today.add(Duration(days: 1));
+    var today = DateTime.parse(date);
+    var checkDate = int.parse(DateFormat("dd").format(DateTime.parse(date)));
+    var checkHour = int.parse(DateFormat("HH").format(DateTime.parse(date)));
+    print("checkDate $checkDate $checkHour");
+    if (checkDate != 31 || checkDate != 30) {
+      //&& checkDate != 1
+      if (checkHour > 10 && checkHour < 18) {
+        if (checkHour == 17) {
+          today = today.add(Duration(days: 1));
         }
-      }else if(checkHour > 18 ){
-        today =today.add(Duration(days: 1));
-      }else if(checkHour == 2 || checkHour == 5){
-      }
-      else{
-        today =today.add(Duration(days: 1));
+      } else if (checkHour > 18) {
+        today = today.add(Duration(days: 1));
+      } else if (checkHour == 2 || checkHour == 5) {
+      } else {
+        today = today.add(Duration(days: 1));
       }
     }
     if (date != null && date != '' && date != "null") {
@@ -291,7 +350,7 @@ class AppUtils {
         .toString();
   }
 
-  static void  showDialogPassword(
+  static void showDialogPassword(
     String title,
     String msg,
   ) {
@@ -300,80 +359,93 @@ class AppUtils {
       barrierDismissible: false,
       title: title,
       content: Text(msg),
-       actions: [
-          TextButton(
+      actions: [
+        TextButton(
           child: Text('Yes', style: TextStyle(color: Colors.red)),
           onPressed: () {
-            box.write('emp_image',"");
+            box.write('emp_image', "");
             OneSignal.shared.removeExternalUserId();
             Get.offAllNamed(Routes.LOGIN);
           },
-          ),
-    ],
+        ),
+      ],
     );
   }
 
- static void showErrorDialog(String errorMessage, String statusCode){
-    
+  static void showErrorDialog(String errorMessage, String statusCode) {
     var error_message = '';
-    if(errorMessage.contains("('") && errorMessage.contains("', None")){
+    if (errorMessage.contains("('") && errorMessage.contains("', None")) {
       const start = "('";
       const end = "', None";
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }
-    else if(errorMessage.contains("('") && errorMessage.contains("',")){
+    } else if (errorMessage.contains("('") && errorMessage.contains("',")) {
       const start = "('";
       const end = "',";
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else if(errorMessage.contains("Warning('") && errorMessage.contains("')")){
+    } else if (errorMessage.contains("Warning('") &&
+        errorMessage.contains("')")) {
       const start = "Warning('";
       const end = "')";
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else if(errorMessage.contains('ERROR: ValidationError(\"') && errorMessage.contains('\",')){
+    } else if (errorMessage.contains('ERROR: ValidationError(\"') &&
+        errorMessage.contains('\",')) {
       const start = 'ERROR: ValidationError(\"';
       const end = '\",';
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else if(errorMessage.contains('ERROR: ValidationError(\\"') && errorMessage.contains('\\",')){
+    } else if (errorMessage.contains('ERROR: ValidationError(\\"') &&
+        errorMessage.contains('\\",')) {
       const start = 'ERROR: ValidationError(\\"';
       const end = '\\",';
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else if(errorMessage.contains('ERROR: ValidationError(\\"') && errorMessage.contains("!")){
+    } else if (errorMessage.contains('ERROR: ValidationError(\\"') &&
+        errorMessage.contains("!")) {
       const start = 'ERROR: ValidationError(\\"';
       const end = "!";
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else if(errorMessage.contains("ERROR:") && errorMessage.contains('"}')){
+    } else if (errorMessage.contains("ERROR:") && errorMessage.contains('"}')) {
       const start = "ERROR:";
       const end = '"}';
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex); // brown fox jumps
+      error_message = errorMessage.substring(
+          startIndex + start.length, endIndex); // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else if(errorMessage.contains('error_descrip":"')){
+    } else if (errorMessage.contains('error_descrip":"')) {
       const start = 'error_descrip":"';
       const end = '"';
       final startIndex = errorMessage.indexOf(start);
       final endIndex = errorMessage.indexOf(end, startIndex + start.length);
-      error_message = errorMessage.substring(startIndex + start.length, endIndex)+" ("+statusCode.toString()+")"; // brown fox jumps
+      error_message =
+          errorMessage.substring(startIndex + start.length, endIndex) +
+              " (" +
+              statusCode.toString() +
+              ")"; // brown fox jumps
       AppUtils.showDialog('Warning', error_message);
-    }else{
+    } else {
       AppUtils.showDialog('Warning', errorMessage);
     }
   }
@@ -389,8 +461,8 @@ class AppUtils {
 
     return formatted_date;
   }
-  
-  static void  showSuspendDialog(
+
+  static void showSuspendDialog(
     String title,
     String msg,
   ) {
@@ -399,8 +471,8 @@ class AppUtils {
       barrierDismissible: false,
       title: title,
       content: Text(msg),
-       actions: [
-          TextButton(
+      actions: [
+        TextButton(
           child: Text('Yes', style: TextStyle(color: Colors.red)),
           onPressed: () {
             // box.write('emp_image',"");
@@ -408,8 +480,8 @@ class AppUtils {
             // Get.offAllNamed(Routes.LOGIN);
             Get.offAllNamed(Routes.LOGIN);
           },
-          ),
-    ],
+        ),
+      ],
     );
   }
 }

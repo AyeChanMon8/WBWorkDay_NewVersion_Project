@@ -49,7 +49,7 @@ class WarningController extends GetxController {
             )),
             barrierDismissible: false));
     File? file = await employeeService!.downloadWarning(warning.id, 'warning${warning.id}');
-    await requestManageExternalStoragePermission();
+    // await requestManageExternalStoragePermission();
     await OpenFile.open(file!.path);
     Get.back();
     //Get.to(PdfView(file.path,'warning${warning.id}'));

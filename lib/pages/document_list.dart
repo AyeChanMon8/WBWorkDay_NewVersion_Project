@@ -84,6 +84,7 @@ class _DocumentListState extends State<DocumentList> {
                             controller
                                 .docList[arguments_index].documentList[fileIndex].documentId,controller
                             .docList[arguments_index].documentList[fileIndex].file_type);
+                        print("file path>>"+file!.path);
                         if (AppUtils.isImage(file!.path)) {
                           Get.dialog(Stack(
                             children: [
@@ -92,7 +93,8 @@ class _DocumentListState extends State<DocumentList> {
                             ],
                           ));
                         } else {
-                          await requestManageExternalStoragePermission();
+                          print("not image >>"+file.path);
+                          // await requestManageExternalStoragePermission();
                           await OpenFile.open(file.path);
                           /* Get.to(PdfView(file.path,controller
                       .docList[index].documentList[fileIndex].documentName));*/

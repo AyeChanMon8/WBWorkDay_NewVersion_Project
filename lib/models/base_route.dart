@@ -69,8 +69,8 @@ class BaseRoute {
       name: map['name'],
       fuel_liter:
           map['fuel_liter'] == null ? 0.0 : map['fuel_liter'].toDouble(),
-      from_street: map['from_street'],
-      to_street: map['to_street'],
+      from_street: map['from_street'] ?? "",
+      to_street: map['to_street'] ?? "",
       expenseIds: List<Expense>.from(
           map['expense_ids']?.map((x) => Expense.fromMap(x))),
       duration_days: map['duration_days'] == null ? 0.0 : map['duration_days'],

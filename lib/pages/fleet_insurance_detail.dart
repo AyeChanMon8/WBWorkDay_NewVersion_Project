@@ -65,7 +65,7 @@ class FleetInsuranceDetail extends StatelessWidget {
                             ],
                           ));
                         } else {
-                          await requestManageExternalStoragePermission();
+                          // await requestManageExternalStoragePermission();
                           await OpenFile.open(file.path);
                           //Get.to(PdfView(file.path,fleet_insurance.attachmentId[fileIndex].name));
                         }

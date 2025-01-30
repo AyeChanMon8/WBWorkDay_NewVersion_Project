@@ -76,15 +76,15 @@ class OvertimeResponse {
     // if (map == null) return null;
   
     return OvertimeResponse(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       employee_id: EmployeeID.fromMap(map['employee_id']),
       requested_employee_id: EmployeeID.fromMap(map['requested_employee_id']),
-      start_date: map['start_date'],
-      end_date: map['end_date'],
-      duration: map['duration'],
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
+      duration: map['duration'] ?? 0.0,
       remark: map['remark'] ?? "",
-      state: map['state'],
+      state: map['state'] ?? "",
       categ_id:OTCategory.fromMap(map['categ_id'])
     );
   }
