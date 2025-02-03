@@ -167,10 +167,10 @@ class Plan_trip_product {
       id: map['id'] ?? 0,
       name: map['name'] ?? '',
       state: map['state'] ?? '',
-      fromDatetime: map['from_datetime'],
-      toDatetime: map['to_datetime'],
-      duration: map['duration'],
-      duration_hours: map['duration_hrs'],
+      fromDatetime: map['from_datetime'] ?? "",
+      toDatetime: map['to_datetime'] ?? "",
+      duration: map['duration'] ?? 0.0,
+      duration_hours: map['duration_hrs'] ?? 0.0,
       vehicleId: Vehicle_id.fromMap(map['vehicle_id']),
       driverId: Driver_id.fromMap(map['driver_id']),
       spare1Id: Spare1_id.fromMap(map['spare1_id']),
@@ -181,12 +181,12 @@ class Plan_trip_product {
           map['expense_ids']?.map((x) => Expense_ids.fromMap(x))),
       consumptionIds: List<PlanTrip_Consumption_ids>.from(map['consumption_ids']
           ?.map((x) => PlanTrip_Consumption_ids.fromMap(x))),
-      lastOdometer: map['last_odometer'],
-      currentOdometer: map['current_odometer'],
-      tripDistance: map['trip_distance'],
-      totalStandardLiter: map['total_standard_liter'],
-      totalConsumedLiter: map['total_consumed_liter'],
-      avgCalculation: map['avg_calculation'],
+      lastOdometer: map['last_odometer'] ?? 0.0,
+      currentOdometer: map['current_odometer'] ?? 0.0,
+      tripDistance: map['trip_distance'] ?? 0.0,
+      totalStandardLiter: map['total_standard_liter'] ?? 0,
+      totalConsumedLiter: map['total_consumed_liter'] ?? 0.0,
+      avgCalculation: map['avg_calculation'] ?? 0.0,
       fuelinIds: List<Fuelin_ids>.from(
           map['fuelin_ids']?.map((x) => Fuelin_ids.fromMap(x))),
       advancedIds: List<Advanced_ids>.from(
@@ -194,7 +194,7 @@ class Plan_trip_product {
       requestAllowanceLines: List<Request_allowance_lines>.from(
           map['request_allowance_lines']
               ?.map((x) => Request_allowance_lines.fromMap(x))),
-      totalAdvance: map['advance_allowed'],
+      totalAdvance: map['advance_allowed'] ?? 0.0,
       productIds: List<Product_ids>.from(
           map['product_ids']?.map((x) => Product_ids.fromMap(x))),
       startTripResponsible: map['start_trip_responsible'] ?? '',
@@ -551,9 +551,9 @@ class Product_ids {
 
     return Product_ids(
       productId: Product_id.fromMap(map['product_id']),
-      quantity: map['quantity'],
-      priceUnit: map['price_unit'],
-      id: map['id'],
+      quantity: map['quantity'] ?? 0.0,
+      priceUnit: map['price_unit'] ?? 0.0,
+      id: map['id'] ?? 0,
       productUom: Product_uom.fromMap(map['product_uom']),
     );
   }
@@ -653,8 +653,8 @@ class Product_uom {
     // if (map == null) return null;
 
     return Product_uom(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -834,11 +834,11 @@ class Request_allowance_lines {
 
     return Request_allowance_lines(
       expenseCategId: Expense_categ_id.fromMap(map['expense_categ_id']),
-      quantity: map['quantity'],
-      amount: map['amount'],
-      totalAmount: map['total_amount'],
+      quantity: map['quantity'] ?? 0.0,
+      amount: map['amount'] ?? 0.0,
+      totalAmount: map['total_amount'] ?? 0.0,
       remark: map['remark'] ?? "",
-      id: map['id'],
+      id: map['id'] ?? 0,
     );
   }
 
@@ -1025,7 +1025,7 @@ class Advanced_ids {
 
     return Advanced_ids(
       routeId: Route_id.fromMap(map['route_id']),
-      approvedAdvance: map['approved_advance'],
+      approvedAdvance: map['approved_advance'] ?? 0.0,
     );
   }
 
@@ -1199,8 +1199,8 @@ class Location_id {
     // if (map == null) return null;
 
     return Location_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

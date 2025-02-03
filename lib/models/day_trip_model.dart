@@ -127,7 +127,7 @@ class DayTripModel {
       'driver_id': driverId?.toMap(),
       'spare1_id': spare1Id?.toMap(),
       'spare2_id': spare2Id?.toMap(),
-      'advanced_request': advancedRequest,
+      'advance_allowed': advancedRequest,
       'expense_ids': expenseIds?.map((x) => x?.toMap())?.toList(),
       'fuelin_ids': fuelInIds?.map((x) => x?.toMap())?.toList(),
       'product_lines': product_lines?.map((x) => x?.toMap())?.toList(),
@@ -156,7 +156,7 @@ class DayTripModel {
       driverId: Driver_id.fromMap(map['driver_id']),
       spare1Id: Spare1_id.fromMap(map['spare1_id']),
       spare2Id: Spare2_id.fromMap(map['spare2_id']),
-      advancedRequest: map['advanced_request'] ?? 0.0,
+      advancedRequest: map['advance_allowed'] ?? 0.0,
       expenseIds: List<DayTrip_Expense_ids>.from(
           map['expense_ids']?.map((x) => DayTrip_Expense_ids.fromMap(x))),
       fuelInIds: List<FuelIn_ids>.from(

@@ -114,7 +114,7 @@ class _StateExpenseTabbar extends State<ExpenseTabBar> {
                     BusinessTravelList(),
                   ],
                 )
-              : outofpocket != null
+              : outofpocket != null && outofpocket != false
                   ? TabBarView(
                       children: [
                         OutOfPocketList(),

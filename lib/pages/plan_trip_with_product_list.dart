@@ -50,17 +50,17 @@ class _PlantripWithProductListPage extends State<PlantripWithProductListPage>{
         init: PlanTripController(),
         builder:(controller) => NotificationListener<ScrollNotification>(
           onNotification: (ScrollNotification scrollInfo) {
-            if (!controller.isLoading.value && scrollInfo.metrics.pixels ==
-                scrollInfo.metrics.maxScrollExtent) {
-              print("*****BottomOfPlanTripList*****");
-              if(controller.plantrip_with_product_list.length>=1){
-                // start loading data
-                controller.offset.value +=limit;
-                controller.isLoading.value = true;
-                _loadData();
-              }
+            // if (!controller.isLoading.value && scrollInfo.metrics.pixels ==
+            //     scrollInfo.metrics.maxScrollExtent) {
+            //   print("*****BottomOfPlanTripList*****");
+            //   if(controller.plantrip_with_product_list.length>=1){
+            //     // start loading data
+            //     controller.offset.value +=limit;
+            //     controller.isLoading.value = true;
+            //     _loadData();
+            //   }
 
-            }
+            // }
             return true;
           },
           child: ListView.builder(

@@ -59,14 +59,14 @@ class OutofPocketExpenseLine {
     // if (map == null) return null;
 
     return OutofPocketExpenseLine(
-      line_id: map['line_id'],
-      date: map['date'],
-      categ_id: map['categ_id'],
-      product_id: map['product_id'],
-      description: map['description'],
-      qty: map['qty'],
-      price_unit: map['price_unit'],
-      price_subtotal: map['price_subtotal'],
+      line_id: map['line_id'] ?? 0,
+      date: map['date'] ?? "",
+      categ_id: map['categ_id'] ?? 0,
+      product_id: map['product_id'] ?? 0,
+      description: map['description'] ?? "",
+      qty: map['qty'] ?? 0.0,
+      price_unit: map['price_unit'] ?? 0.0,
+      price_subtotal: map['price_subtotal'] ?? 0.0,
     );
   }
 

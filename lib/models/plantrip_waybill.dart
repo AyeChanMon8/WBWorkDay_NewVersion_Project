@@ -155,7 +155,7 @@ class Plantrip_waybill {
       'fuelin_ids': fuelinIds?.map((x) => x?.toMap())?.toList(),
       'request_allowance_lines':
           requestAllowanceLines?.map((x) => x?.toMap())?.toList(),
-      'total_advance': totalAdvance,
+      'advance_allowed': totalAdvance,
       'start_trip_responsible': startTripResponsible,
       'end_trip_responsible': endTripResponsible,
       // 'name': name,
@@ -199,7 +199,7 @@ class Plantrip_waybill {
       requestAllowanceLines: List<WayBill_Request_allowance_lines>.from(
           map['request_allowance_lines']
               ?.map((x) => WayBill_Request_allowance_lines.fromMap(x))),
-      totalAdvance: map['total_advance'],
+      totalAdvance: map['advance_allowed'],
       startTripResponsible: map['start_trip_responsible'] ?? '',
       endTripResponsible: map['end_trip_responsible'] ?? ''
     );

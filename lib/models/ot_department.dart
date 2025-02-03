@@ -47,8 +47,8 @@ class OTDepartment {
     // if (map == null) return null;
 
     return OTDepartment(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       complete_name: map['complete_name']?? "",
       branch_id: Branch_id.fromMap(map['branch_id']),
       // branch_id: map['branch_id'],

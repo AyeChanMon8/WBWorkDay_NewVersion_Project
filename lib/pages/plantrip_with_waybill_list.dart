@@ -49,18 +49,18 @@ class _PlantripWithWayBillListPage extends State<PlantripWithWayBillListPage> {
         init: PlanTripController(),
         builder: (controller) => NotificationListener<ScrollNotification>(
           onNotification: (ScrollNotification scrollInfo) {
-            print("limit : ${controller.waybill_offset.value}");
-            print("limit : ${controller.plantrip_with_waybill_list.length}");
-            if (!controller.isLoading.value &&
-                scrollInfo.metrics.pixels ==
-                    scrollInfo.metrics.maxScrollExtent) {
-              if (controller.plantrip_with_waybill_list.length >= 3) {
-                // start loading data
-                controller.waybill_offset.value += limit;
-                controller.waybill_isLoading.value = true;
-                _loadData();
-              }
-            }
+            // print("limit : ${controller.waybill_offset.value}");
+            // print("limit : ${controller.plantrip_with_waybill_list.length}");
+            // if (!controller.isLoading.value &&
+            //     scrollInfo.metrics.pixels ==
+            //         scrollInfo.metrics.maxScrollExtent) {
+            //   if (controller.plantrip_with_waybill_list.length >= 3) {
+            //     // start loading data
+            //     controller.waybill_offset.value += limit;
+            //     controller.waybill_isLoading.value = true;
+            //     _loadData();
+            //   }
+            // }
             return true;
           },
           child: ListView.builder(

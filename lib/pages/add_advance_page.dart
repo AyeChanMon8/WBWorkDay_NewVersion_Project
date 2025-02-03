@@ -33,7 +33,7 @@ Widget build(BuildContext context) {
   //arg = Get.arguments;
   return Scaffold(
     appBar: PreferredSize(
-      preferredSize: const Size.fromHeight(8.0),
+      preferredSize: const Size.fromHeight(60.0),
       child: appbar(context, 'Add Advance', '')),
     body: SingleChildScrollView(
       child: Container(

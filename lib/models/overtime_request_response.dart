@@ -93,14 +93,14 @@ class OvertimeRequestResponse {
     // if (map == null) return null;
   
     return OvertimeRequestResponse(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       start_date: DateTime.parse(map['start_date']).add(Duration(hours: 6,minutes: 30)).toString().substring(0,DateTime.parse(map['start_date']).add(Duration(hours: 6,minutes: 30)).toString().length-4),
       end_date: DateTime.parse(map['end_date']).add(Duration(hours: 6,minutes: 30)).toString().substring(0, DateTime.parse(map['end_date']).add(Duration(hours: 6,minutes: 30)).toString().length-4),
-      duration: map['duration'],
-      reason: map['reason'],
-      state: map['state'],
-      create_date: map['create_date'],
+      duration: map['duration'] ?? 0.0,
+      reason: map['reason'] ?? "",
+      state: map['state'] ?? "",
+      create_date: map['create_date'] ?? "",
       requested_employee_id: RequestedEmployee.fromMap(map['requested_employee_id']),
       department_ids: List<Department>.from(map['department_ids']?.map((x) => Department.fromMap(x))),
       request_line: List<RequestLine>.from(map['request_line']?.map((x) => RequestLine.fromMap(x))),

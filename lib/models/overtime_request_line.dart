@@ -70,15 +70,15 @@ class OvertimeRequestLine {
     // if (map == null) return null;
 
     return OvertimeRequestLine(
-      start_date: map['start_date'],
-      end_date: map['end_date'],
-      employee_id: map['employee_id'],
-      emp_name: map['emp_name'],
-      email: map['email'],
-      state: map['state'],
-      dept_id: map['dept_id'],
-      duration: map['duration'],
-      branch_id: map['branch_id'],
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
+      employee_id: map['employee_id'] ?? 0,
+      emp_name: map['emp_name'] ?? "",
+      email: map['email'] ?? "",
+      state: map['state'] ?? "",
+      dept_id: map['dept_id'] ?? 0,
+      duration: map['duration'] ?? 0.0,
+      branch_id: map['branch_id'] ?? 0,
     );
   }
 

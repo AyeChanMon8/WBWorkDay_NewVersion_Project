@@ -2100,7 +2100,8 @@ class _CreateDayTripState extends State<CreateDayTrip>
                       if (value != null) {
                         DayTripPlanTripGeneralController day_trip_controller =
                             Get.find();
-                        daytrip_controller.dayTripList[arg_index].advance_lines!
+                        setState(() {
+                          daytrip_controller.dayTripList[arg_index].advance_lines!
                             .add(Advance_ids(
                                 id: value,
                                 expense_categ_id: ExpenseCategory_id(
@@ -2116,6 +2117,8 @@ class _CreateDayTripState extends State<CreateDayTrip>
                                     .totalAmountController.text)!,
                                 remark:
                                     day_trip_controller.remarkTextController.text));
+                        });
+                        
                       }
                     });
                   },

@@ -72,16 +72,16 @@ class Palntrip_with_product_fuelin_line {
     // if (map == null) return null;
 
     return Palntrip_with_product_fuelin_line(
-      tripProductId: map['parent_id'],
-      date: map['name'],
-      shop: map['id'],
-      productId: map['product_id'],
-      locationId: map['location_id'],
-      slipNo: map['slip_no'],
-      liter: map['liter'],
-      priceUnit: map['price_unit'],
-      amount: map['amount'],
-      status: map['status'],
+      tripProductId: map['parent_id'] ?? 0,
+      date: map['name'] ?? "",
+      shop: map['id'] ?? "",
+      productId: map['product_id'] ?? 0,
+      locationId: map['location_id'] ?? 0,
+      slipNo: map['slip_no'] ?? "",
+      liter: map['liter'] ?? 0.0,
+      priceUnit: map['price_unit'] ?? 0,
+      amount: map['amount'] ?? 0.0,
+      status: map['status'] ?? "",
     );
   }
 

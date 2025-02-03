@@ -60,15 +60,15 @@ class _DayTripListPageState extends State<DayTripListPage> {
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Obx(()=>dayTripController.dayTripList.value==null?Container(): NotificationListener<ScrollNotification>(
           onNotification: (ScrollNotification scrollInfo) {
-            if (!dayTripController.isLoading.value && scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
-              // start loading data
-              if(dayTripController.dayTripList.value.length>=10){
-                dayTripController.offset.value +=limit;
-                dayTripController.isLoading.value = true;
-                _loadData();
-              }
+            // if (!dayTripController.isLoading.value && scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
+            //   // start loading data
+            //   if(dayTripController.dayTripList.value.length>=10){
+            //     dayTripController.offset.value +=limit;
+            //     dayTripController.isLoading.value = true;
+            //     _loadData();
+            //   }
 
-            }
+            // }
             return true;
           },
           child: ListView.builder(

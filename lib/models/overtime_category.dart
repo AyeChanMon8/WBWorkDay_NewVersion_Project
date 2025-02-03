@@ -33,8 +33,8 @@ class OvertimeCategory {
     // if (map == null) return null;
 
     return OvertimeCategory(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

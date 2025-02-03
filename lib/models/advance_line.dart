@@ -88,8 +88,8 @@ class Advance_line {
 
   Map<String, dynamic> toMap() {
     return {
-      'dayTripId': dayTripId,
-      'expenseCategId': expenseCategId,
+      'day_trip_id': dayTripId,
+      'expense_categ_id': expenseCategId,
       'quantity': quantity,
       'amount': amount,
       'total_amount': total_amount,
@@ -101,8 +101,8 @@ class Advance_line {
     // if (map == null) return null;
 
     return Advance_line(
-      dayTripId: map['dayTripId'],
-      expenseCategId: map['expenseCategId'],
+      dayTripId: map['day_trip_id'],
+      expenseCategId: map['expense_categ_id'],
       quantity: map['quantity'],
       amount: map['amount'],
       total_amount: map['total_amount'],

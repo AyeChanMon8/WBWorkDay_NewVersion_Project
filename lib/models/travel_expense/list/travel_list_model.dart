@@ -84,18 +84,18 @@ class TravelExpenseList {
     // if (map == null) return null;
 
     return TravelExpenseList(
-      id: map['id'],
-      date: map['date'],
-      state: map['state'],
+      id: map['id'] ?? 0,
+      date: map['date'] ?? "",
+      state: map['state'] ?? "",
       employee_id: EmployeeModel.fromMap(map['employee_id']),
       company_id: Company.fromMap(map['company_id']),
       travel_id: TravelModel.fromMap(map['travel_id']),
-      total_expense: map['total_expense'],
-      payment_amount: map['payment_amount'],
-      advanced_money: map['advanced_money'],
+      total_expense: map['total_expense'] ?? 0.0,
+      payment_amount: map['payment_amount'] ?? 0.0,
+      advanced_money: map['advanced_money'] ?? 0.0,
       travel_line: List<TravelLineListModel>.from(
           map['travel_line']?.map((x) => TravelLineListModel.fromMap(x))),
-      number: map['number'],
+      number: map['number'] ?? "",
     );
   }
 

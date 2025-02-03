@@ -81,17 +81,17 @@ class OvertimeRequest {
     // if (map == null) return null;
 
     return OvertimeRequest(
-      name: map['name'],
-      start_date: map['start_date'],
-      end_date: map['end_date'],
-      duration: map['duration'],
-      reason: map['reason'],
-      requested_employee_id: map['requested_employee_id'],
+      name: map['name'] ?? "",
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
+      duration: map['duration'] ?? 0.0,
+      reason: map['reason'] ?? "",
+      requested_employee_id: map['requested_employee_id'] ?? 0,
       department_ids: List<OTDepartment>.from(
           map['department_ids']?.map((x) => OTDepartment.fromMap(x))),
       request_line: List<OvertimeRequestLine>.from(
           map['request_line']?.map((x) => OvertimeRequestLine.fromMap(x))),
-      categ_id: map['categ_id'],
+      categ_id: map['categ_id'] ?? 0,
       branch_ids: List<Branch_id>.from(
           map['branch_ids']?.map((x) => Branch_id.fromMap(x))),
     );
@@ -168,8 +168,8 @@ class Branch_id {
     // if (map == null) return null;
 
     return Branch_id(
-      id: map['id'],
-      name: map['name']
+      id: map['id'] ?? 0,
+      name: map['name'] ?? ""
     );
   }
 

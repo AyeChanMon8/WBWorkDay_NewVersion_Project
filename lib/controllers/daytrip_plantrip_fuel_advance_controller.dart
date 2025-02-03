@@ -502,18 +502,23 @@ class DayTripPlanTripGeneralController extends GetxController {
               amount: int.tryParse(amountTextController.text)!,
               total_amount: int.tryParse(totalAmountController.text)!,
               remark: remarkTextController.text);
-          await dayTripServie?.addAdvance(advance).then((data) {
+          await dayTripServie?.addAdvance(advance).then((data) async{
             isAdvanceButton.value = false;
             if (data != 0) {
-              Get.defaultDialog(
-                  title: 'Information',
-                  content: Text('Successfully Saved!'),
-                  confirmTextColor: Colors.white,
-                  onConfirm: () {
-                    Get.back();
-                    Get.back();
-                    Get.back(result: data);
-                  });
+              Get.defaultDialog(title:'Information',content: Text('Successfully Saved!'),confirmTextColor: Colors.white,onConfirm: () async{
+                Get.back();
+                Get.back();
+                Get.back(result: data);
+              });
+              // Get.defaultDialog(
+              //     title: 'Information',
+              //     content: Text('Successfully Saved!'),
+              //     confirmTextColor: Colors.white,
+              //     onConfirm: () {
+              //       Get.back();
+              //       Get.back();
+              //       Get.back(result: data);
+              //     });
             }
           });
         } else if (arg == "PlanTripProduct") {

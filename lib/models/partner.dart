@@ -46,8 +46,8 @@ class Partner{
 
   factory Partner.fromMap(Map<String, dynamic> map) {
     return new Partner(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

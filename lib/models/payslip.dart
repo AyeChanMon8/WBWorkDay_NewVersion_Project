@@ -65,17 +65,17 @@ class PaySlips {
     // if (map == null) return null;
 
     return PaySlips(
-      id: map['id'],
-      month: map['month'],
-      year: map['year'],
-      dateFrom: map['date_from'],
-      dateTo: map['date_to'],
+      id: map['id'] ?? 0,
+      month: map['month'] ?? "",
+      year: map['year'] ?? "",
+      dateFrom: map['date_from'] ?? "",
+      dateTo: map['date_to'] ?? "",
       employeeId: Employee_id.fromMap(map['employee_id']),
       categoryList: List<Category_list>.from(
           map['category_list']?.map((x) => Category_list.fromMap(x))),
-      total: map['total'],
-      pin: map['pin'],
-      slip_number: map['slip_number'],
+      total: map['total'] ?? 0.0,
+      pin: map['pin'] ?? "",
+      slip_number: map['slip_number'] ?? "",
       bank_account_number: map['bank_account_number'],
       company_logo: map['company_logo']
     );
@@ -222,7 +222,7 @@ class Category_list {
     // if (map == null) return null;
 
     return Category_list(
-      name: map['name'],
+      name: map['name'] ?? "",
       code: map['code']?? "",
       total: map['total']?? 0.0,
       lineList: List<LineIDs>.from(
