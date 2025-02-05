@@ -34,9 +34,9 @@ class CategoryID {
     // if (map == null) return null;
 
     return CategoryID(
-      id: map['id'],
-      name: map['name'],
-      code: map['code'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      code: map['code'] ?? "",
     );
   }
 

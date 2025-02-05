@@ -111,10 +111,10 @@ class KeyPerformanceAttachmentIds {
     // if (map == null) return null;
 
     return KeyPerformanceAttachmentIds(
-      id: map['id'],
-      name: map['name'],
-      attached_file: map['attached_file'],
-      mimetype: map['mimetype'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      attached_file: map['attached_file'] ?? "",
+      mimetype: map['mimetype'] ?? "",
     );
   }
 

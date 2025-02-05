@@ -81,8 +81,8 @@ class Hr_rule {
     // if (map == null) return null;
 
     return Hr_rule(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       lineIds:
           List<LineIDs>.from(map['line_ids']?.map((x) => LineIDs.fromMap(x))),
     );

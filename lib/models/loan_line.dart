@@ -98,9 +98,9 @@ class LoanLine {
     // if (map == null) return null;
 
     return LoanLine(
-      date: map['date'],
-      state: map['state'],
-      amount: map['amount']
+      date: map['date'] ?? "",
+      state: map['state'] ?? "",
+      amount: map['amount'] ?? 0.0
     );
   }
 

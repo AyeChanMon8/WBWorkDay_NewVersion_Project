@@ -45,8 +45,8 @@ class Daytrip_advance_expense_category {
     // if (map == null) return null;
 
     return Daytrip_advance_expense_category(
-        id: map['id'],
-        displayName: map['display_name'],
+        id: map['id'] ?? 0,
+        displayName: map['display_name'] ?? "",
         outOfPocketExpense: map['out_of_pocket_expense'],
         travelExpense: map['travel_expense'] ?? false,
         tripExpense: map['trip_expense']);

@@ -45,10 +45,10 @@ class LineIDs {
     // if (map == null) return null;
 
     return LineIDs(
-      name: map['name'],
-      code: map['code'],
+      name: map['name'] ?? "",
+      code: map['code'] ?? "",
       category_id:map['category_id'] == null ? null: CategoryID.fromMap(map['category_id']),
-      total: map['total'],
+      total: map['total'] ?? 0.0,
     );
   }
 

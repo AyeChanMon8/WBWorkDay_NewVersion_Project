@@ -65,7 +65,7 @@ class TravelRequest {
     // if (map == null) return null;
 
     return TravelRequest(
-      employee_id: map['employee_id'],
+      employee_id: map['employee_id'] ?? 0,
       start_date: map['start_date'],
       end_date: map['end_date'],
       city_from: map['city_from'],

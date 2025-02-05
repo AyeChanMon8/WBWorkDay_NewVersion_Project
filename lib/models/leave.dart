@@ -65,13 +65,13 @@ class Leave {
     // if (map == null) return null;
 
     return Leave(
-      employee_id: map['employee_id'],
-      holiday_status_id: map['holiday_status_id'],
-      start_date: map['start_date'],
-      end_date: map['end_date'],
-      duration: map['duration'],
-      description: map['description'],
-      attachment: map['attachment'],
+      employee_id: map['employee_id'] ?? 0,
+      holiday_status_id: map['holiday_status_id'] ?? 0,
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
+      duration: map['duration'] ?? 0.0,
+      description: map['description'] ?? "",
+      attachment: map['attachment'] ?? '',
       leave_line: List<LeaveLine>.from(
           map['leave_line']?.map((x) => LeaveLine.fromMap(x))),
     );

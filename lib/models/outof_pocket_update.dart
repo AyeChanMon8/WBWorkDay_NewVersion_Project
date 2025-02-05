@@ -62,11 +62,11 @@ class OutofPocketUpdateModel {
     // if (map == null) return null;
 
     return OutofPocketUpdateModel(
-      id: map['id'],
-      date: map['date'],
-      mobile_user_id: map['mobile_user_id'],
-      employee_id: map['employee_id'],
-      company_id: map['company_id'],
+      id: map['id'] ?? 0,
+      date: map['date'] ?? "",
+      mobile_user_id: map['mobile_user_id'] ?? 0,
+      employee_id: map['employee_id'] ?? 0,
+      company_id: map['company_id'] ?? 0,
       pocket_line: List<PockectModel>.from(
           map['pocket_line']?.map((x) => PockectModel.fromMap(x))),
     );

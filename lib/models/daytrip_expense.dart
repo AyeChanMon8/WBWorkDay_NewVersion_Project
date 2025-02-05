@@ -31,8 +31,8 @@ class Daytrip_expense {
     // if (map == null) return null;
 
     return Daytrip_expense(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

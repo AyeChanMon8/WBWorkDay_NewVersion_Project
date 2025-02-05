@@ -45,8 +45,8 @@ class Leave {
     return Leave(
       start_date: map['start_date'],
       end_date: map['end_date'],
-      city_from: map['city_from'],
-      city_to: map['city_to'],
+      city_from: map['city_from'] ?? "",
+      city_to: map['city_to'] ?? "",
     
     );
   }

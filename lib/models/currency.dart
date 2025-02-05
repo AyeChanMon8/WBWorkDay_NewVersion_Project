@@ -31,8 +31,8 @@ class Currency {
     // if (map == null) return null;
 
     return Currency(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

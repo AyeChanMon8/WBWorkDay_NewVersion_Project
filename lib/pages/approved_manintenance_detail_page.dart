@@ -129,7 +129,7 @@ class _ApprovedMaintenanceDetailState extends State<ApprovedMaintenanceDetailPag
     var labels = AppLocalizations.of(context);
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(8.0),
+        preferredSize: const Size.fromHeight(60.0),
         child: appbar(context, labels!.maintenance, '')),
       body: SingleChildScrollView(
         child: Container(
@@ -280,9 +280,12 @@ class _ApprovedMaintenanceDetailState extends State<ApprovedMaintenanceDetailPag
                     labels.spare1+' : ',
                     style: datalistStyle(),
                   ),
+                  maintenanceRequestModel.spareId!=null && maintenanceRequestModel.spareId!.name!=null ?
                   AutoSizeText(
                     AppUtils.removeNullString(maintenanceRequestModel.spareId!.name),
                     style: maintitleStyle(),
+                  ) : Text('-',
+                  style: maintitleStyle()
                   ),
                 ],
               ),

@@ -27,7 +27,7 @@ class Emp_ID {
     // if (map == null) return null;
 
     return Emp_ID(
-      id: map['id'],
+      id: map['id'] ?? 0,
     );
   }
 

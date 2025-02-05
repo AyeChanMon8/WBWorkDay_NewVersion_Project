@@ -131,11 +131,11 @@ class DocAttachment {
     // if (map == null) return null;
 
     return DocAttachment(
-      id: map['id'],
-      name: map['name'],
-       type: map['type'],
-      datas: map['datas'],
-       mimetype: map['mimetype'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+       type: map['type'] ?? "",
+      datas: map['datas'] ?? "",
+       mimetype: map['mimetype'] ?? "",
     );
   }
 

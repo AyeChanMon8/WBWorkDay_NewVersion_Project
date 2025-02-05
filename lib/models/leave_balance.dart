@@ -42,10 +42,10 @@ class LeaveBalance {
     // if (map == null) return null;
 
     return LeaveBalance(
-      name: map['name'],
-      entitle: map['entitle'],
-      taken: map['taken'],
-      balance: map['balance'],
+      name: map['name'] ?? "",
+      entitle: map['entitle'] ?? 0.0,
+      taken: map['taken'] ?? 0.0,
+      balance: map['balance'] ?? 0.0,
     );
   }
 

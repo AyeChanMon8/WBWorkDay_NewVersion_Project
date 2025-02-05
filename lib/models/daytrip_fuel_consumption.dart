@@ -64,12 +64,12 @@ class Daytrip_fuel_consumption {
     // if (map == null) return null;
 
     return Daytrip_fuel_consumption(
-      dayTripId: map['day_trip_id'],
-      lineId: map['line_id'],
-      consumedLiter: map['consumed_liter'],
-      description: map['description'],
-      employeeId: map['employee_id'],
-      date: map['date'],
+      dayTripId: map['day_trip_id'] ?? 0,
+      lineId: map['line_id'] ?? 0,
+      consumedLiter: map['consumed_liter'] ?? 0.0,
+      description: map['description'] ?? "",
+      employeeId: map['employee_id'] ?? 0,
+      date: map['date'] ?? "",
     );
   }
 

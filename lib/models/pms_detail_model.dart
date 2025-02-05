@@ -206,19 +206,19 @@ class PMSDetailModel {
     // if (map == null) return null;
 
     return PMSDetailModel(
-      id: map['id'],
-      name: map['name'],
-      state: map['state'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      state: map['state'] ?? "",
       employeeId: Employee_id.fromMap(map['employee_id']),
       templateId: Template_id.fromMap(map['performance_template_id']),
       compTemplateId: Comp_template_id.fromMap(map['competencies_template_id']),
-      midFromDate: map['mid_from_date'],
-      midToDate: map['mid_to_date'],
-      endFromDate: map['end_from_date'],
-      endToDate: map['end_to_date'],
+      midFromDate: map['mid_from_date'] ?? "",
+      midToDate: map['mid_to_date'] ?? "",
+      endFromDate: map['end_from_date'] ?? "",
+      endToDate: map['end_to_date'] ?? "",
       dateRangeId: Date_range_id.fromMap(map['date_range_id']),
-      dateStart: map['date_start'],
-      dateEnd: map['date_end'],
+      dateStart: map['date_start'] ?? "",
+      dateEnd: map['date_end'] ?? "",
       keyPerformanceIds: List<Key_performance_ids>.from(
           map['key_performance_ids']
               ?.map((x) => Key_performance_ids.fromMap(x))),

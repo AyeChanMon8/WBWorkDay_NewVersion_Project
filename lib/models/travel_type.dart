@@ -40,8 +40,8 @@ class TravelType {
     // if (map == null) return null;
 
     return TravelType(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       allowance_ids: List<TravelAllowance>.from(
           map['allowance_ids']?.map((x) => TravelAllowance.fromMap(x))),
     );

@@ -50,8 +50,8 @@ class EmployeeSlip {
     // if (map == null) return null;
 
     return EmployeeSlip(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       job_id: Job.fromMap(map['job_id']),
       department_id: Department.fromMap(map['department_id']),
     );

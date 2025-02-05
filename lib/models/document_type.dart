@@ -85,8 +85,8 @@ class DocumentType {
     // if (map == null) return null;
 
     return DocumentType(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

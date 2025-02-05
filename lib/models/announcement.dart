@@ -99,11 +99,11 @@ class Announcement {
     // if (map == null) return null;
 
     return Announcement(
-      id: map['id'],
-      name: map['name'],
-      announcement_reason: map['announcement_reason'],
-      state: map['state'],
-      requested_date: map['requested_date'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      announcement_reason: map['announcement_reason'] ?? "",
+      state: map['state'] ?? "",
+      requested_date: map['requested_date'] ?? "",
       attachment_id: map['attachment_id'] == null
           ? null
           : List<Attachment>.from(

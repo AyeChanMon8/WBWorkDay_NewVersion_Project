@@ -54,7 +54,7 @@ class Attachment {
     // if (map == null) return null;
 
     return Attachment(
-      id: map['id'],
+      id: map['id'] ?? 0,
       name: map['name']??"",
       type: map['type']??"",
       url: map['url']??"",

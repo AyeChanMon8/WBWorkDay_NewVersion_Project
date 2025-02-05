@@ -104,9 +104,9 @@ class Remark {
     // if (map == null) return null;
   
     return Remark(
-      remark: map['remark'],
-      state: map['state'],
-      remark_line: map['remark_line'],
+      remark: map['remark'] ?? "",
+      state: map['state'] ?? "",
+      remark_line: map['remark_line'] ?? "",
     );
   }
 

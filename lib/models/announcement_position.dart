@@ -29,8 +29,8 @@ class AnnouncementPosition {
     // if (map == null) return null;
 
     return AnnouncementPosition(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

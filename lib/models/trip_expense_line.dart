@@ -81,18 +81,18 @@ class TripExpenseLine {
     // if (map == null) return null;
 
     return TripExpenseLine(
-      id: map['id'],
-      date: map['date'],
+      id: map['id'] ?? 0,
+      date: map['date'] ?? "",
       categ_id: CategoryModel.fromMap(map['categ_id']),
       product_id: ProductModel.fromMap(map['product_id']),
       description: map['description'] ?? "",
-      qty: map['qty'],
-      price_unit: map['price_unit'],
-      price_subtotal: map['price_subtotal'],
+      qty: map['qty'] ?? 0.0,
+      price_unit: map['price_unit'] ?? 0.0,
+      price_subtotal: map['price_subtotal'] ?? 0.0,
       attached_file: map['attached_file'] ?? '',
-      expense_title: map['expense_title'],
-      expense: map['expense'],
-      over_amount: map['over_amount'],
+      expense_title: map['expense_title'] ?? "",
+      expense: map['expense'] ?? "",
+      over_amount: map['over_amount'] ?? 0.0,
     );
   }
 

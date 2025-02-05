@@ -29,8 +29,8 @@ class EmployeeDeptTag {
     // if (map == null) return null;
   
     return EmployeeDeptTag(
-      category_id: map['category_id'],
-      emp_id: map['emp_id'],
+      category_id: map['category_id'] ?? 0,
+      emp_id: map['emp_id'] ?? 0,
     );
   }
 

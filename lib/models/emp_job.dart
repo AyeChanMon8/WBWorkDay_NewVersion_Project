@@ -74,10 +74,10 @@ class Emp_job {
     // if (map == null) return null;
 
     return Emp_job(
-      id: map['id'],
-      name: map['name'],
-      job_id: map['job_id'],
-      job_name: map['job_name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      job_id: map['job_id'] ?? 0,
+      job_name: map['job_name'] ?? "",
     );
   }
 

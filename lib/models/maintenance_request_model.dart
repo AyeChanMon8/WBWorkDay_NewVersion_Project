@@ -1317,10 +1317,12 @@ class Warehouse_ids {
     // if (map == null) return null;
 
     return Warehouse_ids(
-      productId: map['product_id'],
-      locationId: map['location_id'],
-      cost: map['cost'],
-      qty: map['qty'],
+      productId: Product_id.fromMap(map['product_id']),
+      // productId: map['product_id'],
+      locationId: Location_id.fromMap(map['location_id']),
+      // locationId: map['location_id'],
+      cost: map['cost'] ?? 0.0,
+      qty: map['qty'] ?? 0.0,
     );
   }
 

@@ -57,8 +57,8 @@ class Document_folder {
     // if (map == null) return null;
 
     return Document_folder(
-      folderId: map['folder_id'],
-      folderName: map['folder_name'],
+      folderId: map['folder_id'] ?? 0,
+      folderName: map['folder_name'] ?? "",
     );
   }
 

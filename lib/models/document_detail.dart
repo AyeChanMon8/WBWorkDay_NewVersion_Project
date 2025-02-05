@@ -132,11 +132,11 @@ class Document_detail {
     // if (map == null) return null;
 
     return Document_detail(
-        id: map['id'],
-        name: map['name'],
+        id: map['id'] ?? 0,
+        name: map['name'] ?? "",
         folderId: Folder_id.fromMap(map['folder_id']),
-        datas: map['datas'],
-        displayName: map['display_name'],
+        datas: map['datas'] ?? "",
+        displayName: map['display_name'] ?? "",
         type: map['type'] ?? "");
   }
 
