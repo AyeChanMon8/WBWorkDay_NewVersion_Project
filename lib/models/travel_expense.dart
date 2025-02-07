@@ -50,12 +50,12 @@ class TravelExpense {
     // if (map == null) return null;
 
     return TravelExpense(
-      expense_categ_id: map['expense_categ_id'],
-      total_amount: map['total_amount'],
-      quantity: map['quantity'],
-      amount: map['amount'],
-      remark: map['remark'],
-      expense_name: map['expense_name'],
+      expense_categ_id: map['expense_categ_id'] ?? 0,
+      total_amount: map['total_amount'] ?? 0.0,
+      quantity: map['quantity'] ?? 0,
+      amount: map['amount'] ?? 0,
+      remark: map['remark'] ?? "",
+      expense_name: map['expense_name'] ?? "",
     );
   }
 

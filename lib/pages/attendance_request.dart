@@ -270,10 +270,10 @@ class AttendanceRequest extends GetWidget<AttendanceRequestController> {
                       shrinkWrap: true,
                       itemCount: controller.attendance_list.value.length,
                       itemBuilder: (BuildContext context, int index) {
-                        var check_in_date_time = AppUtils.changeDateTimeFormat(
-                            controller.attendance_list.value[index].check_in);
-                        var check_out_date_time = AppUtils.changeDateTimeFormat(
-                            controller.attendance_list.value[index].check_out);
+                        var check_in_date_time = controller.attendance_list.value[index].check_in!=null ? AppUtils.changeDateTimeFormat(
+                            controller.attendance_list.value[index].check_in) : "";
+                        var check_out_date_time = controller.attendance_list.value[index].check_out!=null ? AppUtils.changeDateTimeFormat(
+                            controller.attendance_list.value[index].check_out) : "";
                         var utc_checkin_date = controller
                             .attendance_list[index].check_in
                             .toString();

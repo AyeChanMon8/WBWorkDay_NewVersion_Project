@@ -34,14 +34,14 @@ class _PlanTripProductRouteApprovalState
   Widget build(BuildContext context) {
     final labels = AppLocalizations.of(context);
     index = Get.arguments;
-    var spare_one = AppUtils.removeNullString(
-        controller.ptpRouteApprovalList.value[index].spare1Id!.name);
-    var spare_two = AppUtils.removeNullString(
-        controller.ptpRouteApprovalList.value[index].spare2Id!.name);
-    var from_date = AppUtils.changeDateAndTimeFormat(controller.ptpRouteApprovalList.value[index].fromDatetime);
+    var spare_one = controller.ptpRouteApprovalList.value[index].spare1Id!.name!=null ? AppUtils.removeNullString(
+        controller.ptpRouteApprovalList.value[index].spare1Id!.name):"";
+    var spare_two = controller.ptpRouteApprovalList.value[index].spare2Id!.name!=null ? AppUtils.removeNullString(
+        controller.ptpRouteApprovalList.value[index].spare2Id!.name) : "";
+    var from_date = controller.ptpRouteApprovalList.value[index].fromDatetime!=null ?AppUtils.changeDateAndTimeFormat(controller.ptpRouteApprovalList.value[index].fromDatetime):"";
     //var to_date = AppUtils.changeDefaultDateTimeFormat(controller.plantrip_with_product_list[arg_index].toDatetime);
-    var to_date = AppUtils.changeDateAndTimeFormat(
-        controller.ptpRouteApprovalList.value[index].fromDatetime);
+    var to_date = controller.ptpRouteApprovalList.value[index].toDatetime!=null? AppUtils.changeDateAndTimeFormat(
+        controller.ptpRouteApprovalList.value[index].toDatetime):"";
     return Scaffold(
       appBar: AppBar(
         title: Text(

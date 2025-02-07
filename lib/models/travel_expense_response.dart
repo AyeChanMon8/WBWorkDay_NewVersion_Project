@@ -51,9 +51,9 @@ class TravelExpenseResponse {
 
     return TravelExpenseResponse(
       expense_categ_id: ExpenseCategory.fromMap(map['expense_categ_id']),
-      quantity: map['quantity'],
-      amount: map['amount'],
-      total_amount: map['total_amount'],
+      quantity: map['quantity'] ?? 0.0,
+      amount: map['amount'] ?? 0.0,
+      total_amount: map['total_amount'] ?? 0.0,
       remark: map['remark']??"",
     );
   }

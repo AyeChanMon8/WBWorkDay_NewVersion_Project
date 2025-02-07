@@ -101,8 +101,9 @@ class OverTimeResponseListPage extends StatelessWidget {
         shrinkWrap: true,
         itemCount: controller.otAcceptedList.length,
         itemBuilder: (BuildContext context, int index) {
-          var start_date_time = AppUtils.changeDateTimeFormat(controller
-              .otAcceptedList.value[index].start_date);
+          var start_date_time = controller
+              .otAcceptedList.value[index].start_date!=null ? AppUtils.changeDateTimeFormat(controller
+              .otAcceptedList.value[index].start_date) : "";
           return Container(
               child: InkWell(
                   onTap: () {
@@ -182,8 +183,9 @@ class OverTimeResponseListPage extends StatelessWidget {
         shrinkWrap: true,
         itemCount: controller.otDeclinedList.length,
         itemBuilder: (BuildContext context, int index) {
-          var start_date_time = AppUtils.changeDateTimeFormat(controller
-              .otDeclinedList.value[index].start_date);
+          var start_date_time = controller
+              .otDeclinedList.value[index].start_date!=null ? AppUtils.changeDateTimeFormat(controller
+              .otDeclinedList.value[index].start_date) : "";
           // var end_date_time = AppUtils.changeDateTimeFormat(controller
           //     .otDeclinedList.value[index].end_date);
           return Container(
@@ -266,8 +268,9 @@ class OverTimeResponseListPage extends StatelessWidget {
         shrinkWrap: true,
         itemCount: controller.otDraftList.length,
         itemBuilder: (BuildContext context, int index) {
-          var start_date_time = AppUtils.changeDateTimeFormat(controller
-              .otDraftList.value[index].start_date);
+          var start_date_time = controller
+              .otDraftList.value[index].start_date!=null ? AppUtils.changeDateTimeFormat(controller
+              .otDraftList.value[index].start_date) : "";
           return Container(
               child: InkWell(
                   onTap: () {

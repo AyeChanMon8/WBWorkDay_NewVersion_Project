@@ -85,12 +85,12 @@ class PTWRouteReplacemnt {
     // if (map == null) return null;
 
     return PTWRouteReplacemnt(
-      id: map['id'],
+      id: map['id'] ?? 0,
       name: map['name'],
-      fromDatetime: map['from_datetime'],
-      toDatetime: map['to_datetime'],
-      replaceableOldRouteIdsTxt: map['replaceable_old_route_ids_txt'],
-      state: map['state'],
+      fromDatetime: map['from_datetime'] ?? "",
+      toDatetime: map['to_datetime'] ?? "",
+      replaceableOldRouteIdsTxt: map['replaceable_old_route_ids_txt'] ?? "",
+      state: map['state'] ?? "",
       vehicleId: Vehicle_id.fromMap(map['vehicle_id']),
       companyID: CompanyId.fromMap(map['company_id']),
       driverId: Driver_id.fromMap(map['driver_id']),
@@ -181,7 +181,7 @@ class NewRouteIDs {
     return NewRouteIDs(
         companyId:
             CompanyId.fromMap(map['company_id']),
-        id: map['id'],
+        id: map['id'] ?? 0,
         routeId:
             RouteId.fromMap(map['route_id']));
   }

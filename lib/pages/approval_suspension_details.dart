@@ -71,7 +71,7 @@ class _ApprovalSuspensionDetailsState extends State<ApprovalSuspensionDetails> {
                           style: datalistStyle(),
                         ),
                       ),Container(
-                          child: controller.suspensionApprovalList.length > 0 && controller.suspensionApprovalList.value[index].employeeId!=null ?Text(AppUtils.removeNullString(controller.suspensionApprovalList.value[index].employeeId!.name),
+                          child: controller.suspensionApprovalList.length > 0 && controller.suspensionApprovalList.value[index].employeeId!=null && controller.suspensionApprovalList.value[index].employeeId!.name!=null ?Text(AppUtils.removeNullString(controller.suspensionApprovalList.value[index].employeeId!.name),
                             style: subtitleStyle(),
                           ):SizedBox(),
                         ),

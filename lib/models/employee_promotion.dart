@@ -314,9 +314,9 @@ class Employee_promotion {
     // if (map == null) return null;
 
     return Employee_promotion(
-      id: map['id'],
-      name: map['name'],
-      type: map['type'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      type: map['type'] ?? "",
       employeeId: Employee_id.fromMap(map['employee_id']),
       companyId: Company_id.fromMap(map['company_id']),
       branchId: Branch_id.fromMap(map['branch_id']),
@@ -324,17 +324,17 @@ class Employee_promotion {
       jobId: Job_id.fromMap(map['job_id']),
       jobGradeId: Job_grade_id.fromMap(map['job_grade_id']),
       salaryLevelId: Salary_level_id.fromMap(map['salary_level_id']),
-      wage: map['wage'],
-      date: map['date'],
+      wage: map['wage'] ?? 0.0,
+      date: map['date'] ?? "",
       newCompanyId: New_company_id.fromMap(map['new_company_id']),
       newBranchId: New_branch_id.fromMap(map['new_branch_id']),
       newDepartmentId: New_department_id.fromMap(map['new_department_id']),
       newJobId: New_job_id.fromMap(map['new_job_id']),
       newJobGradeId: New_job_grade_id.fromMap(map['new_job_grade_id']),
       newSalaryLevelId: New_salary_level_id.fromMap(map['new_salary_level_id']),
-      newWage: map['new_wage'],
+      newWage: map['new_wage'] ?? 0.0,
       note: map['note'],
-      state: map['state']
+      state: map['state'] ?? ""
     );
   }
 

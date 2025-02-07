@@ -49,11 +49,11 @@ class RequestedAllowanceLines {
     // if (map == null) return null;
 
     return RequestedAllowanceLines(
-      id: map['id'],
-      travel_allowance_id: map['travel_allowance_id'],
-      standard_amount: map['standard_amount'],
-      actual_amount: map['actual_amount'],
-      remark: map['remark'],
+      id: map['id'] ?? 0,
+      travel_allowance_id: map['travel_allowance_id'] ?? 0,
+      standard_amount: map['standard_amount'] ?? 0.0,
+      actual_amount: map['actual_amount'] ?? 0.0,
+      remark: map['remark'] ?? "",
     );
   }
 

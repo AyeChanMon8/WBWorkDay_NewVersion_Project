@@ -44,12 +44,12 @@ class Plantrip_product_expense_line {
     // if (map == null) return null;
 
     return Plantrip_product_expense_line(
-      tripProductId: map['trip_product_id'],
-      routeExpenseId: map['route_expense_id'],
-      actualAmount: map['actual_amount'],
-      description: map['description'],
-      id: map['id'],
-      image: map['attached_file'],
+      tripProductId: map['trip_product_id'] ?? 0,
+      routeExpenseId: map['route_expense_id'] ?? 0,
+      actualAmount: map['actual_amount'] ?? 0.0,
+      description: map['description'] ?? "",
+      id: map['id'] ?? 0,
+      image: map['attached_file'] ?? "",
     );
   }
 

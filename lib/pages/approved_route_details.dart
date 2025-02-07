@@ -260,10 +260,11 @@ class _ApprovedRouteDetailsState extends State<ApprovedRouteDetails> {
         itemCount: controller.routeApprovedList[index].expenseIds!.length,
         itemBuilder: (BuildContext context, int pos) {
           var amount = "";
-          amount = AppUtils.removeNullString(controller
+          amount = controller
+              .routeApprovedList[index].expenseIds![pos].amount!=null ?AppUtils.removeNullString(controller
               .routeApprovedList[index].expenseIds![pos].amount
-              .toString());
-          if (amount.isNotEmpty) {
+              .toString()) : '';
+          if (amount.isNotEmpty && amount!="") {
             amount = AppUtils.addThousnadSperator(double.tryParse(amount)!);
           }
           return Column(

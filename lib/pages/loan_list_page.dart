@@ -116,12 +116,14 @@ class _LoanListPageState extends State<LoanListPage> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 20, bottom: 20, top: 5, right: 20),
-                                child: Text(
+                                child: controller
+                                      .loanList[dindex].state!=null ? Text(
                                   AppUtils.removeNullString(controller
                                       .loanList[dindex].state
                                       .toString()),
                                   style: subtitleStyle(),
-                                ),
+                                ):Text('-',
+                                style: subtitleStyle()),
                               ),
                             ],
                           ),

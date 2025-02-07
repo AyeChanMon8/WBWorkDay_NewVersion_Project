@@ -65,16 +65,16 @@ class _ApprovedResignationListState extends State<ApprovedResignationList> {
                               arguments: index);
                         },
                         child: ListTile(
-                            leading: Text(AppUtils.removeNullString(controller.resignationApprovedList[index].name
-                            )),
+                            leading: controller.resignationApprovedList[index].name!=null ? Text(AppUtils.removeNullString(controller.resignationApprovedList[index].name
+                            )):Text('-'),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                controller.resignationApprovedList.value[index].employeeId!.name!=null ?Text(
                                     AppUtils.removeNullString(controller.resignationApprovedList.value[index].employeeId!.name),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ):Text('-',style: TextStyle(color: backgroundIconColor)),
                               ],
                             ),
 

@@ -89,7 +89,7 @@ class LeaveListResponse {
     // if (map == null) return null;
 
     return LeaveListResponse(
-      id: map['id'],
+      id: map['id'] ?? 0,
       employee_id: EmployeeID.fromMap(map['employee_id']),
       holiday_status_id:HolidayStatusId.fromMap(map['holiday_status_id']),
       start_date: map['start_date'] ?? "",

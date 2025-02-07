@@ -32,8 +32,8 @@ class WarningAttachModel {
     // if (map == null) return null;
 
     return WarningAttachModel(
-      id: map['id'],
-      attached_filename: map['attached_filename'],
+      id: map['id'] ?? 0,
+      attached_filename: map['attached_filename'] ?? "",
       attachment: map['attachment'] ?? "",
     );
   }

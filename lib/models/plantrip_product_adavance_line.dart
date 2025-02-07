@@ -37,12 +37,12 @@ class Plantrip_product_adavance_line {
     // if (map == null) return null;
 
     return Plantrip_product_adavance_line(
-      tripProductId: map['trip_product_id'],
-      expenseCategId: map['expense_categ_id'],
-      quantity: map['quantity'],
-      amount: map['amount'],
-      total_amount: map['total_amount'],
-      remark: map['remark'],
+      tripProductId: map['trip_product_id'] ?? 0,
+      expenseCategId: map['expense_categ_id'] ?? 0,
+      quantity: map['quantity'] ?? 0,
+      amount: map['amount'] ?? 0,
+      total_amount: map['total_amount'] ?? 0,
+      remark: map['remark'] ?? "",
     );
   }
 

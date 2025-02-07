@@ -106,22 +106,22 @@ class Loan {
     // if (map == null) return null;
   
     return Loan(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       employee_id: EmployeeID.fromMap(map['employee_id']),
       department_id: Department.fromMap(map['department_id']),
       job_position: Job.fromMap(map['job_position']),
-      date: map['date'],
-      payment_date: map['payment_date'],
-      loan_amount: map['loan_amount'],
-      installment: map['installment'],
-      type: map['type'],
+      date: map['date'] ?? "",
+      payment_date: map['payment_date'] ?? "",
+      loan_amount: map['loan_amount'] ?? 0.0,
+      installment: map['installment'] ?? 0,
+      type: map['type'] ?? "",
       company_id: Company.fromMap(map['company_id']),
       branch_id: Company.fromMap(map['branch_id']),
       loan_lines: List<LoanLine>.from(map['loan_lines']?.map((x) => LoanLine.fromMap(x))),
-      state: map['state'],
-      attachment:map['attached_file'],
-      attachment_filename:map['attached_filename'],
+      state: map['state'] ?? "",
+      attachment:map['attached_file'] ?? "",
+      attachment_filename:map['attached_filename'] ?? "",
 
     );
   }

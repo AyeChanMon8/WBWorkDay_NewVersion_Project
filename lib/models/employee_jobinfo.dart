@@ -94,11 +94,11 @@ class Employee_jobinfo {
     // if (map == null) return null;
 
     return Employee_jobinfo(
-      job_grade: map['job_grade'],
-      salary_level: map['salary_level'],
-      wage: map['wage'],
-      salary_level_name: map['salary_level_name'],
-      job_grade_name: map['job_grade_name']
+      job_grade: map['job_grade'] ?? "",
+      salary_level: map['salary_level'] ?? "",
+      wage: map['wage'] ?? 0.0,
+      salary_level_name: map['salary_level_name'] ?? "",
+      job_grade_name: map['job_grade_name'] ?? ""
     );
   }
 

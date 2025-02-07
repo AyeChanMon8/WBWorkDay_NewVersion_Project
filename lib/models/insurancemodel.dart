@@ -132,15 +132,15 @@ class Insurancemodel {
     // if (map == null) return null;
 
     return Insurancemodel(
-      id: map['id'],
+      id: map['id'] ?? 0,
       employeeId: Employee_id.fromMap(map['employee_id']),
-      premiumAmount: map['premium_amount'],
+      premiumAmount: map['premium_amount'] ?? 0.0,
       insuranceTypeId: Insurance_type_id.fromMap(map['insurance_type_id']),
-      coverageAmount: map['coverage_amount'],
-      policyNumber: map['policy_number'],
-      feesEmployee: map['fees_employee'],
-      effectiveDate: map['effective_date'],
-      installment: map['installment'],
+      coverageAmount: map['coverage_amount'] ?? 0.0,
+      policyNumber: map['policy_number'] ?? 0,
+      feesEmployee: map['fees_employee'] ?? 0.0,
+      effectiveDate: map['effective_date'] ?? "",
+      installment: map['installment'] ?? 0,
       expireDate: map['expireDate'] ?? '',
       deductionPerMonth: map['deduction_per_month'],
       insuranceLines: List<Insurance_lines>.from(

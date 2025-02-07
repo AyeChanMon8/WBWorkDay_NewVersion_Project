@@ -44,8 +44,8 @@ class TravelExpenseCategory {
     // if (map == null) return null;
 
     return TravelExpenseCategory(
-      id: map['id'],
-      display_name: map['display_name'],
+      id: map['id'] ?? 0,
+      display_name: map['display_name'] ?? "",
       out_of_pocket_expense: map['out_of_pocket_expense']?? false,
       travel_expense: map['travel_expense']??false,
       trip_expense: map['trip_expense']??false,

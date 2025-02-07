@@ -30,7 +30,7 @@ class EmployeeID {
     // if (map == null) return null;
 
     return EmployeeID(
-      id: map['id'],
+      id: map['id'] ?? 0,
       name: map['name'] ?? "",
       image_128: map['image_128'] ?? "",
       work_email: map['work_email'] ?? "",

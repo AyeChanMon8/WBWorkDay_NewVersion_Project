@@ -58,15 +58,15 @@ class Plantrip_waybill_fuelin_line {
     // if (map == null) return null;
 
     return Plantrip_waybill_fuelin_line(
-      tripWaybillId: map['trip_waybill_id'],
-      date: map['date'],
-      shop: map['shop'],
-      productId: map['product_id'],
-      locationId: map['location_id'],
-      slipNo: map['slip_no'],
-      liter: map['liter'],
-      priceUnit: map['price_unit'],
-      amount: map['amount'],
+      tripWaybillId: map['trip_waybill_id'] ?? 0,
+      date: map['date'] ?? "",
+      shop: map['shop'] ?? "",
+      productId: map['product_id'] ?? 0,
+      locationId: map['location_id'] ?? 0,
+      slipNo: map['slip_no'] ?? "",
+      liter: map['liter'] ?? 0.0,
+      priceUnit: map['price_unit'] ?? 0,
+      amount: map['amount'] ?? 0.0,
     );
   }
 

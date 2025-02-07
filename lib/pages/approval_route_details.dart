@@ -178,10 +178,11 @@ class _ApprovalRouteDetailsState extends State<ApprovalRouteDetails> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                child:   Text(
+                child:  controller.routeApprovalList.value[index].code!=null ? Text(
                   AppUtils.removeNullString(controller.routeApprovalList.value[index].code.toString()),
                   style: TextStyle(fontSize: 20),
-                ),
+                ): Text('-',
+                style: TextStyle(fontSize: 20),),
               ),
             ],
           ),
@@ -399,11 +400,12 @@ class _ApprovalRouteDetailsState extends State<ApprovalRouteDetails> {
             itemCount:
                 controller.routeApprovalList.value[index].expenseIds!.length,
             itemBuilder: (BuildContext context, int pos) {
-              var amt = AppUtils.removeNullString(controller
+              var amt = controller
+                  .routeApprovalList.value[index].expenseIds![pos].amount!=null ?AppUtils.removeNullString(controller
                   .routeApprovalList.value[index].expenseIds![pos].amount
-                  .toString());
+                  .toString()):'';
               var amount = '';
-              if (amt.isNotEmpty) {
+              if (amt.isNotEmpty && amt!=null) {
                 amount = AppUtils.addThousnadSperator(controller
                     .routeApprovalList.value[index].expenseIds![pos].amount);
               }

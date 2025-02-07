@@ -31,8 +31,8 @@ class RequestedEmployee {
     // if (map == null) return null;
 
     return RequestedEmployee(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

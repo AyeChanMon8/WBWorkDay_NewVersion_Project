@@ -52,12 +52,12 @@ class Warning {
     // if (map == null) return null;
 
     return Warning(
-      id: map['id'],
+      id: map['id'] ?? 0,
       employee_id: List<WarningEmployee>.from(
           map['employee_id']?.map((x) => WarningEmployee.fromMap(x))),
-      date: map['date'],
-      description: map['description'],
-      mark: map['mark'],
+      date: map['date'] ?? "",
+      description: map['description'] ?? "",
+      mark: map['mark'] ?? 0.0,
     );
   }
 

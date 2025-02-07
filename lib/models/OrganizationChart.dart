@@ -38,8 +38,8 @@ class OrganizationChart {
     // if (map == null) return null;
   
     return OrganizationChart(
-      id: map['id'],
-      email: map['email'],
+      id: map['id'] ?? "",
+      email: map['email'] ?? "",
       next: List<String>.from(map['next']),
     );
   }

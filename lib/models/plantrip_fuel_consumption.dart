@@ -55,16 +55,16 @@ class Plantrip_fuel_consumption {
     // if (map == null) return null;
 
     return Plantrip_fuel_consumption(
-      planTripId: map['plan_trip_id'],
-      consumedLiter: map['consumed_liter'],
-      description: map['description'],
-      route_id: map['route_id'],
-      vehicleId: map['vehicle_id'],
-      employeeId: map['employee_id'],
-      sourceDoc: map['source_doc'],
-      date: map['date'],
-      fillingLiter: map['filling_liter'],
-      line_id: map['line_id'],
+      planTripId: map['plan_trip_id'] ?? 0,
+      consumedLiter: map['consumed_liter'] ?? 0.0,
+      description: map['description'] ?? "",
+      route_id: map['route_id'] ?? 0,
+      vehicleId: map['vehicle_id'] ?? 0,
+      employeeId: map['employee_id'] ?? 0,
+      sourceDoc: map['source_doc'] ?? "",
+      date: map['date'] ?? "",
+      fillingLiter: map['filling_liter'] ?? 0,
+      line_id: map['line_id'] ?? 0,
     );
   }
 

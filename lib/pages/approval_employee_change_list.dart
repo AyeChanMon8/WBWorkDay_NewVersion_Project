@@ -63,22 +63,24 @@ class _ApprovalEmployeeChangeListState extends State<ApprovalEmployeeChangeList>
                               arguments: index);
                         },
                         child: ListTile(
-                            leading: Text(AppUtils.removeNullString(controller.employeeChangesApprovalList[index].type
-                            )),
+                            leading: Text(controller.employeeChangesApprovalList[index].type!=null ? AppUtils.removeNullString(controller.employeeChangesApprovalList[index].type
+                            ) : '-'),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(height: 5),
-                                Text(
+                                controller.employeeChangesApprovalList.value[index].employeeId.name!=null ?Text(
                                     AppUtils.removeNullString(controller.employeeChangesApprovalList.value[index].employeeId.name),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ): Text('-',
+                                style: TextStyle(color: backgroundIconColor)),
                                 SizedBox(height: 10),
-                                Text(
+                                controller.employeeChangesApprovalList.value[index].type!=null ? Text(
                                     AppUtils.removeNullString(controller.employeeChangesApprovalList.value[index].type),
                                     style: TextStyle(color: backgroundIconColor)
-
+                                ) : Text('-',
+                                style: TextStyle(color: backgroundIconColor)
                                 ),
                               ],
                             ),

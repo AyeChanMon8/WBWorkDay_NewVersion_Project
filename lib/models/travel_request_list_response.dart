@@ -97,19 +97,19 @@ class TravelRequestListResponse {
     return TravelRequestListResponse(
       id: map['id'],
       employee_id: EmployeeID.fromMap(map['employee_id']),
-      start_date: map['start_date'],
-      end_date: map['end_date'],
-      city_from: map['city_from'],
-      city_to: map['city_to'],
-      duration: map['duration'],
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
+      city_from: map['city_from'] ?? "",
+      city_to: map['city_to'] ?? "",
+      duration: map['duration'] ?? 0.0,
       travel_line: List<TravelLine>.from(
           map['travel_line']?.map((x) => TravelLine.fromMap(x))),
       request_allowance_lines: List<TravelExpenseResponse>.from(
           map['request_allowance_lines']?.map((x) => TravelExpenseResponse.fromMap(x))),
-      state: map['state'],
-      payment_amount: map['payment_amount'],
-      create_date: map['create_date'],
-      name: map['name'],
+      state: map['state'] ?? "",
+      payment_amount: map['payment_amount'] ?? 0.0,
+      create_date: map['create_date'] ?? "",
+      name: map['name'] ?? "",
       travel_type_id: TravelExpenseApproveModel.fromMap(map['travel_type_id']),
     );
   }

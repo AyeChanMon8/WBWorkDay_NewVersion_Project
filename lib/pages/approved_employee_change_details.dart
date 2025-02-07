@@ -309,10 +309,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].newCompanyId!=null && controller.employeeChangesApprovedList.value[index].newCompanyId.name!=null ?Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].newCompanyId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),
@@ -334,10 +335,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].newBranchId!=null && controller.employeeChangesApprovedList.value[index].newBranchId.name!=null ?Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].newBranchId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle(),),
                       ),
                     ],
                   ),
@@ -359,10 +361,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].newDepartmentId!=null && controller.employeeChangesApprovedList.value[index].newDepartmentId.name!=null ? Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].newDepartmentId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),
@@ -384,10 +387,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].newJobId!=null && controller.employeeChangesApprovedList.value[index].newJobId.name!=null ? Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].newJobId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle(),),
                       ),
                     ],
                   ),
@@ -409,10 +413,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].newJobGradeId!=null && controller.employeeChangesApprovedList.value[index].newJobGradeId.name!=null ? Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].newJobGradeId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle(),),
                       ),
                     ],
                   ),
@@ -433,10 +438,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].newSalaryLevelId!=null && controller.employeeChangesApprovedList.value[index].newSalaryLevelId.name!=null ? Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].newSalaryLevelId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle(),),
                       ),
                     ],
                   ),
@@ -483,10 +489,11 @@ class _ApprovedEmployeeChangeDetailsState extends State<ApprovedEmployeeChangeDe
                         ),
                       ),
                       Expanded(
-                        child: Text(
+                        child: controller.employeeChangesApprovedList.value[index].note!=null ?Text(
                           AppUtils.removeNullString(controller.employeeChangesApprovedList.value[index].note),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),

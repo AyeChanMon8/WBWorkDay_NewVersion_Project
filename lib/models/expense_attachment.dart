@@ -84,7 +84,7 @@ class Expense_attachment {
     // if (map == null) return null;
 
     return Expense_attachment(
-      expenseLineId: map['expense_line_id'],
+      expenseLineId: map['expense_line_id'] ?? 0,
       attachment_exist: map['attachment_exist']?? false,
       attachments: [ map['attachments'][0]],
     );

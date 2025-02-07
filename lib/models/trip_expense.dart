@@ -102,16 +102,16 @@ class TripExpense {
     // if (map == null) return null;
 
     return TripExpense(
-      id: map['id'],
-      number: map['number'],
-      date: map['date'],
-      state: map['state'],
-      source_doc: map['source_doc'],
+      id: map['id'] ?? 0,
+      number: map['number'] ?? "",
+      date: map['date'] ?? "",
+      state: map['state'] ?? "",
+      source_doc: map['source_doc'] ?? "",
       advanced_money: map['advanced_money'],
       employee_id: EmployeeModel.fromMap(map['employee_id']),
       company_id: Company.fromMap(map['company_id']),
-      total_expense: map['total_expense'],
-      diff_amount: map['diff_amount'],
+      total_expense: map['total_expense'] ?? 0.0,
+      diff_amount: map['diff_amount'] ?? 0.0,
       vendor_bill_id: Company.fromMap(map['vendor_bill_id']),
       daytrip_id: Company.fromMap(map['daytrip_id']),
       plantrip_product_id: Company.fromMap(map['plantrip_product_id']),

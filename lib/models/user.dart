@@ -54,12 +54,12 @@ class User {
     // if (map == null) return null;
 
     return User(
-      uid: map['uid'],
-      company_id: map['company_id'],
-      access_token: map['access_token'],
-      expires_in: map['expires_in'],
-      refresh_token: map['refresh_token'],
-      refresh_expires_in: map['refresh_expires_in'],
+      uid: map['uid'] ?? 0,
+      company_id: map['company_id'] ?? 0,
+      access_token: map['access_token'] ?? "",
+      expires_in: map['expires_in'] ?? "",
+      refresh_token: map['refresh_token'] ?? "",
+      refresh_expires_in: map['refresh_expires_in'] ?? 0,
     );
   }
 

@@ -43,11 +43,11 @@ class RewardEmployee {
     // if (map == null) return null;
 
     return RewardEmployee(
-      id: map['id'],
-      name: map['name'],
-      reward_carried_forward: map['reward_carried_forward'],
-      reward_this_year: map['reward_this_year'],
-      reward_total: map['reward_total'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      reward_carried_forward: map['reward_carried_forward'] ?? 0.0,
+      reward_this_year: map['reward_this_year'] ?? 0.0,
+      reward_total: map['reward_total'] ?? 0.0,
     );
   }
 

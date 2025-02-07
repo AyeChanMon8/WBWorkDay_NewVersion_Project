@@ -77,17 +77,17 @@ class LeaveReport {
     // if (map == null) return null;
 
     return LeaveReport(
-      id: map['id'],
-      create_date: map['create_date'],
-      create_uid: map['create_uid'],
-      write_date: map['write_date'],
-      write_uid: map['write_uid'],
-      x_employee_id: map['x_employee_id'],
-      x_name: map['x_name'],
-      x_leave_type: map['x_leave_type'],
-      x_entitle: map['x_entitle'],
-      x_taken: map['x_taken'],
-      x_balance: map['x_balance']
+      id: map['id'] ?? 0,
+      create_date: map['create_date'] ?? "",
+      create_uid: map['create_uid'] ?? "",
+      write_date: map['write_date'] ?? "",
+      write_uid: map['write_uid'] ?? "",
+      x_employee_id: map['x_employee_id'] ?? 0,
+      x_name: map['x_name'] ?? "",
+      x_leave_type: map['x_leave_type'] ?? "",
+      x_entitle: map['x_entitle'] ?? 0.0,
+      x_taken: map['x_taken'] ?? 0.0,
+      x_balance: map['x_balance'] ?? 0.0
     );
   }
 

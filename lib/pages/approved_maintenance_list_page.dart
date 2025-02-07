@@ -70,10 +70,10 @@ class _ApprovedMaintenanceListPageState
               }
               Maintenance_request_model maintenanceModel =
                   controller.maintenanceList[index];
-              var start_date = AppUtils.changeDateTimeFormat(
-                  maintenanceModel.startDate ?? "");
-              var end_date =
-                  AppUtils.changeDateTimeFormat(maintenanceModel.endDate ?? "");
+              var start_date = maintenanceModel.startDate!=null ? AppUtils.changeDateTimeFormat(
+                  maintenanceModel.startDate ?? "") : "";
+              var end_date = maintenanceModel.endDate !=null ?
+                  AppUtils.changeDateTimeFormat(maintenanceModel.endDate ?? "") : "";
               return InkWell(
                 onTap: () {
                   controller.current_page.value = widget.pageType;
@@ -155,9 +155,11 @@ class _ApprovedMaintenanceListPageState
                               labels.vehicle + ' : ',
                               style: maintitleStyle(),
                             ),
-                            AutoSizeText(
-                              maintenanceModel.vehicleId!.name ?? '',
-                              style: maintitleStyle(),
+                            Expanded(
+                              child: AutoSizeText(
+                                maintenanceModel.vehicleId!.name ?? '',
+                                style: maintitleStyle(),
+                              ),
                             ),
                           ],
                         ),

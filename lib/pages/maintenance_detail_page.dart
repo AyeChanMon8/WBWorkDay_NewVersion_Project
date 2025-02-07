@@ -118,10 +118,10 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
     }
     requestDate =
         AppUtils.changeDateFormat(maintenanceRequestModel.requestDate ?? "");
-    controller.selectedFromDate.value =
-        AppUtils.changeDateTimeFormat(maintenanceRequestModel.startDate ?? "");
-    controller.selectedToDate.value =
-        AppUtils.changeDateTimeFormat(maintenanceRequestModel.endDate ?? "");
+    controller.selectedFromDate.value = maintenanceRequestModel.startDate !=null ?
+        AppUtils.changeDateTimeFormat(maintenanceRequestModel.startDate ?? "") : "";
+    controller.selectedToDate.value = maintenanceRequestModel.endDate!=null ?
+        AppUtils.changeDateTimeFormat(maintenanceRequestModel.endDate ?? "") : "";
     //controller.selectedFromDate.value = DateFormat('yyyy-MM-dd HH:mm').parse(maintenanceRequestModel.startDate.toString()).add(Duration(hours: 6,minutes: 30)).toString().split('.')[0];
     //controller.selectedToDate.value = DateFormat('yyyy-MM-dd HH:mm').parse(maintenanceRequestModel.endDate.toString()).add(Duration(hours: 6,minutes: 30)).toString().split('.')[0];
     super.initState();
@@ -213,9 +213,11 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                     labels.maintenanceTeam + ' : ',
                     style: datalistStyle(),
                   ),
-                  AutoSizeText(
-                    maintenanceRequestModel.maintenanceTeamId!.name ?? '',
-                    style: maintitleStyle(),
+                  Expanded(
+                    child: AutoSizeText(
+                      maintenanceRequestModel.maintenanceTeamId!.name ?? '',
+                      style: maintitleStyle(),
+                    ),
                   ),
                 ],
               ),
@@ -320,11 +322,11 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                     labels.driver + ' : ',
                     style: datalistStyle(),
                   ),
-                  AutoSizeText(
+                  maintenanceRequestModel.driverId!.name!=null ?AutoSizeText(
                     AppUtils.removeNullString(
                         maintenanceRequestModel.driverId!.name),
                     style: maintitleStyle(),
-                  ),
+                  ):Text('-',style: maintitleStyle()),
                 ],
               ),
               SizedBox(
@@ -336,11 +338,11 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                     labels.spare1 + ' : ',
                     style: datalistStyle(),
                   ),
-                  AutoSizeText(
+                  maintenanceRequestModel.spareId?.name!=null ?AutoSizeText(
                     AppUtils.removeNullString(
                         maintenanceRequestModel.spareId?.name ?? ""),
                     style: maintitleStyle(),
-                  ),
+                  ): Text('-'),
                 ],
               ),
               SizedBox(
@@ -352,11 +354,11 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                     labels.spare2 + ' : ',
                     style: datalistStyle(),
                   ),
-                  AutoSizeText(
+                  maintenanceRequestModel.spare2Id!.name!=null ?AutoSizeText(
                     AppUtils.removeNullString(
                         maintenanceRequestModel.spare2Id!.name),
                     style: maintitleStyle(),
-                  ),
+                  ):Text('-'),
                 ],
               ),
               SizedBox(
@@ -397,11 +399,12 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                     style: datalistStyle(),
                   ),
                   Expanded(
-                    child: AutoSizeText(
+                    child: maintenanceRequestModel.description!=null ? AutoSizeText(
                       AppUtils.removeNullString(
                           maintenanceRequestModel.description!),
                       style: maintitleStyle(),
-                    ),
+                    ) : Text('-',
+                    style: maintitleStyle()),
                   ),
                 ],
               ),
@@ -655,10 +658,12 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                                                       ?.name ??
                                                   ""))),
                                       Expanded(
-                                        child: AutoSizeText(
+                                        child: controller
+                                                .maintenanceProductIdList[index]
+                                                .type!=null ? AutoSizeText(
                                             AppUtils.removeNullString(controller
                                                 .maintenanceProductIdList[index]
-                                                .type)),
+                                                .type)):Text('-'),
                                       ),
                                       Expanded(
                                           child: AutoSizeText(
@@ -839,20 +844,26 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                                   children: [
                                     Expanded(
                                         flex: 3,
-                                        child: AutoSizeText(
+                                        child: maintenanceRequestModel
+                                                    .warehouseIds![index]
+                                                    .productId!
+                                                    .name!=null ?AutoSizeText(
                                             AppUtils.removeNullString(
                                                 maintenanceRequestModel
                                                     .warehouseIds![index]
                                                     .productId!
-                                                    .name))),
+                                                    .name)):Text('-')),
                                     Expanded(
                                         flex: 2,
-                                        child: AutoSizeText(
+                                        child: maintenanceRequestModel
+                                                    .warehouseIds![index]
+                                                    .locationId!
+                                                    .name!=null ? AutoSizeText(
                                             AppUtils.removeNullString(
                                                 maintenanceRequestModel
                                                     .warehouseIds![index]
                                                     .locationId!
-                                                    .name))),
+                                                    .name)):Text('-')),
                                     Expanded(
                                         flex: 1,
                                         child: Padding(
@@ -869,8 +880,8 @@ class _MaintenanceDetailPageState extends State<MaintenanceDetailPage> {
                                         child: Padding(
                                           padding:
                                               const EdgeInsets.only(left: 8.0),
-                                          child: AutoSizeText(
-                                              '${AppUtils.removeNullString(maintenanceRequestModel.warehouseIds![index].qty.toString())}'),
+                                          child: maintenanceRequestModel.warehouseIds![index].qty!=null ? AutoSizeText(
+                                              '${AppUtils.removeNullString(maintenanceRequestModel.warehouseIds![index].qty.toString())}'):Text('-'),
                                         )),
                                   ],
                                 ),

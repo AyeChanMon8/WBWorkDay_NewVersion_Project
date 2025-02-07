@@ -93,7 +93,7 @@ class Warning_model {
     // if (map == null) return null;
 
     return Warning_model(
-      id: map['id'],
+      id: map['id'] ?? 0,
       employeeId: List<Employee_id>.from(
           map['employee_id']?.map((x) => Employee_id.fromMap(x))),
       warningTypeId: List<Warning_type_id>.from(
@@ -105,10 +105,10 @@ class Warning_model {
       warningAttachId: List<WarningAttachModel>.from(
           map['warning_attach_id']?.map((x) => WarningAttachModel.fromMap(x))),
       tempLines: List<dynamic>.from(map['temp_lines']),
-      state: map['state'],
-      date: map['date'],
-      description: map['description'],
-      mark: map['mark'],
+      state: map['state'] ?? "",
+      date: map['date'] ?? "",
+      description: map['description'] ?? "",
+      mark: map['mark'] ?? 0.0,
       code: map['code']??"",
     );
   }

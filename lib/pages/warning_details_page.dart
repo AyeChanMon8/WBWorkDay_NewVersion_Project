@@ -529,12 +529,14 @@ class WarningDetailsPage extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemCount: controller.warnings[index].managerWarningIds!.length,
         itemBuilder: (BuildContext context, int pos) {
-          var name = AppUtils.removeNullString(controller
+          var name = controller
+              .warnings[index].managerWarningIds![pos].employee!.name!=null? AppUtils.removeNullString(controller
               .warnings[index].managerWarningIds![pos].employee!.name
-              .toString());
-          var mark = AppUtils.removeNullString(controller
+              .toString()): '';
+          var mark = controller
+              .warnings[index].managerWarningIds![pos].mark!=null ? AppUtils.removeNullString(controller
               .warnings[index].managerWarningIds![pos].mark
-              .toString());
+              .toString()): '';
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

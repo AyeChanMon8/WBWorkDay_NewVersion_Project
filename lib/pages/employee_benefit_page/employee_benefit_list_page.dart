@@ -95,12 +95,13 @@ class _EmployeeBenefitListPageState extends State<EmployeeBenefitListPage> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 20, bottom: 20, top: 5, right: 20),
-                                child: Text(
+                                child: controller
+                                      .employeeBenefitList[dindex].description!=null ? Text(
                                   AppUtils.removeNullString(controller
                                       .employeeBenefitList[dindex].description
                                       .toString()),
                                   style: subtitleStyle(),
-                                ),
+                                ): Text('-',style: subtitleStyle()),
                               ),
                             ],
                           ),
@@ -118,12 +119,13 @@ class _EmployeeBenefitListPageState extends State<EmployeeBenefitListPage> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 20, bottom: 20, top: 5, right: 20),
-                                child: Text(
+                                child: controller
+                                      .employeeBenefitList[dindex].benefit_id.name!=null ? Text(
                                   AppUtils.removeNullString(controller
                                       .employeeBenefitList[dindex].benefit_id.name
                                       .toString()),
                                   style: subtitleStyle(),
-                                ),
+                                ):Text('-',style: subtitleStyle()),
                               ),
                             ],
                           ),
@@ -141,12 +143,13 @@ class _EmployeeBenefitListPageState extends State<EmployeeBenefitListPage> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 20, bottom: 20, top: 5, right: 20),
-                                child: Text(
+                                child: controller
+                                      .employeeBenefitList[dindex].quantity!=null ? Text(
                                   AppUtils.removeNullString(controller
                                       .employeeBenefitList[dindex].quantity
                                       .toString()),
                                   style: subtitleStyle(),
-                                ),
+                                ) : Text('-',style: subtitleStyle(),),
                               ),
                             ],
                           ),
@@ -164,11 +167,12 @@ class _EmployeeBenefitListPageState extends State<EmployeeBenefitListPage> {
                               Container(
                                 margin: EdgeInsets.only(
                                     left: 20, bottom: 20, top: 5, right: 20),
-                                child: Text(
+                                child: status!=null ?Text(
                                   AppUtils.removeNullString(status
                                       .toString()),
                                   style: subtitleStyle(),
-                                ),
+                                ):Text('-',
+                                style: subtitleStyle(),),
                               ),
                             ],
                           ),

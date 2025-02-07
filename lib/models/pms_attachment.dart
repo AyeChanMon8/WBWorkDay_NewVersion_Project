@@ -38,9 +38,9 @@ class PMSattachment {
     // if (map == null) return null;
 
     return PMSattachment(
-      id: map['id'],
-      name: map['name'],
-      attach_file: map['attach_file'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      attach_file: map['attach_file'] ?? "",
     );
   }
 

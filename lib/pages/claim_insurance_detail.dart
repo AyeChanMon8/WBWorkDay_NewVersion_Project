@@ -171,9 +171,10 @@ class ClaimInsuranceDetailPage extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(7.0),
-                    child: Text(
+                    child: insurance.description!=null ? Text(
                         '${AppUtils.removeNullString(insurance.description)}',
                         style:
+                            TextStyle(color: Color.fromRGBO(58, 47, 112, 1))) : Text('-',style:
                             TextStyle(color: Color.fromRGBO(58, 47, 112, 1))),
                   )
                 ]),

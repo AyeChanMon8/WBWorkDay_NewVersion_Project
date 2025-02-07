@@ -64,22 +64,24 @@ class _ApprovedLoanListState extends State<ApprovedLoanList> {
                             arguments: index);
                       },
                       child: ListTile(
-                          leading: Text(AppUtils.removeNullString(controller.loanApprovedList[index].name!
-                          )),
+                          leading: controller.loanApprovedList[index].name!=null ?Text(AppUtils.removeNullString(controller.loanApprovedList[index].name!
+                          )):Text('-'),
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              controller.loanApprovedList.value[index].employee_id!=null && controller.loanApprovedList.value[index].employee_id!.name!=null ? Text(
                                   AppUtils.removeNullString(controller.loanApprovedList.value[index].employee_id!.name),
                                   style: TextStyle(color: backgroundIconColor)
 
-                              ),
+                              ):Text('-',
+                              style: TextStyle(color: backgroundIconColor)),
                               SizedBox(height: 5),
-                              Text(
+                              controller.loanApprovedList.value[index].type!=null ? Text(
                                   AppUtils.removeNullString(controller.loanApprovedList.value[index].type!),
                                   style: TextStyle(color: backgroundIconColor)
 
-                              ),
+                              ):Text('-',
+                              style: TextStyle(color: backgroundIconColor)),
                               SizedBox(height: 5),
                               Text(
                                   AppUtils.addThousnadSperator(controller.loanApprovedList.value[index].loan_amount!),

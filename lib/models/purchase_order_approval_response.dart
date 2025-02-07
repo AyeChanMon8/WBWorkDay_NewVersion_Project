@@ -65,10 +65,10 @@ class PurchaseOrderApprovalResponse {
     // if (map == null) return null;
 
     return PurchaseOrderApprovalResponse(
-      id: map['id'],
-      name: map['name'],
-      partner_name: map['partner_name'],
-      amount_total: map['amount_total'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      partner_name: map['partner_name'] ?? "",
+      amount_total: map['amount_total'] ?? 0.0,
       currency_id: Currency.fromMap(map['currency_id']),
       company_id: Company.fromMap(map['company_id']),
       branch_id: Branch_id.fromMap(map['branch_id']),
@@ -478,12 +478,12 @@ class OrderLine {
       categ_id: Category.fromMap(map['categ_id']),
       product_id: Product_id.fromMap(map['product_id']),
       vehicle_id: Vehicle_id.fromMap(map['vehicle_id']),
-      product_qty: map['product_qty'],
-      qty_received: map['qty_received'],
-      qty_invoiced: map['qty_invoiced'],
+      product_qty: map['product_qty'] ?? 0.0,
+      qty_received: map['qty_received'] ?? 0.0,
+      qty_invoiced: map['qty_invoiced'] ?? 0.0,
       product_uom: ProductUom.fromMap(map['product_uom']),
-      price_unit: map['price_unit'],
-      price_subtotal: map['price_subtotal'],
+      price_unit: map['price_unit'] ?? 0.0,
+      price_subtotal: map['price_subtotal'] ?? 0.0,
     );
   }
 

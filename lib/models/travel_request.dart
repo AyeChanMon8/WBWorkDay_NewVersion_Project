@@ -66,11 +66,11 @@ class TravelRequest {
 
     return TravelRequest(
       employee_id: map['employee_id'] ?? 0,
-      start_date: map['start_date'],
-      end_date: map['end_date'],
-      city_from: map['city_from'],
-      city_to: map['city_to'],
-      duration: map['duration'],
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
+      city_from: map['city_from'] ?? "",
+      city_to: map['city_to'] ?? "",
+      duration: map['duration'] ?? 0.0,
       travel_line: List<TravelLine>.from(
           map['travel_line']?.map((x) => TravelLine.fromMap(x))),
       request_allowance_lines: List<TravelExpense>.from(

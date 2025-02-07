@@ -38,10 +38,10 @@ class TravelAllowance {
     // if (map == null) return null;
 
     return TravelAllowance(
-      name: map['name'],
-      type_id: map['type_id'],
-      standard_amount: map['standard_amount'],
-      remark: map['remark'],
+      name: map['name'] ?? "",
+      type_id: map['type_id'] ?? 0,
+      standard_amount: map['standard_amount'] ?? 0.0,
+      remark: map['remark'] ?? "",
     );
   }
 

@@ -62,28 +62,31 @@ class _ApprovalLoanListState extends State<ApprovalLoanList> {
                               arguments: index);
                         },
                         child: ListTile(
-                            leading: Text(AppUtils.removeNullString(controller.loanApprovalList[index].name!
-                                )),
+                            leading: controller.loanApprovalList[index].name!=null ? Text(AppUtils.removeNullString(controller.loanApprovalList[index].name!
+                                )): Text('-'),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                controller.loanApprovalList.value[index].employee_id!.name!=null ? Text(
                                   AppUtils.removeNullString(controller.loanApprovalList.value[index].employee_id!.name),
                                     style: TextStyle(color: backgroundIconColor)
 
+                                ):Text('-',style: TextStyle(color: backgroundIconColor)
                                 ),
                                 SizedBox(height: 5),
-                                Text(
+                                controller.loanApprovalList.value[index].type!=null ?Text(
                                   AppUtils.removeNullString(controller.loanApprovalList.value[index].type!),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ): Text('-',
+                                style: TextStyle(color: backgroundIconColor)),
                                 SizedBox(height: 5),
-                                Text(
+                                controller.loanApprovalList.value[index].loan_amount!=null ? Text(
                                   AppUtils.addThousnadSperator(controller.loanApprovalList.value[index].loan_amount!),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ): Text('-',
+                                style: TextStyle(color: backgroundIconColor)),
                               ],
                             ),
 

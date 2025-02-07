@@ -37,8 +37,8 @@ class EmployeeCategory {
     // if (map == null) return null;
   
     return EmployeeCategory(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       employee_ids: List<EmployeeID>.from(map['employee_ids']?.map((x) => EmployeeID.fromMap(x))),
     );
   }

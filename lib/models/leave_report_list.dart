@@ -41,8 +41,8 @@ class LeaveReportList {
     // if (map == null) return null;
 
     return LeaveReportList(
-      employee_id: map['employee_id'],
-      employee_name: map['employee_name'],
+      employee_id: map['employee_id'] ?? 0,
+      employee_name: map['employee_name'] ?? "",
       balance_list: List<LeaveBalance>.from(
           map['balance_list']?.map((x) => LeaveBalance.fromMap(x))),
     );

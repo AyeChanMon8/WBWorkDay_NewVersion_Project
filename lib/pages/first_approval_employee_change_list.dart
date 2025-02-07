@@ -70,17 +70,17 @@ class _FirstApprovalEmployeeChangeListState extends State<FirstApprovalEmployeeC
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(height: 5),
-                                Text(
+                                controller.employeeChangesFirstApprovalList.value[index].employeeId.name!=null ?Text(
                                     AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].employeeId.name),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ):Text('-',style: TextStyle(color: backgroundIconColor)),
                                 SizedBox(height: 10),
-                                Text(
+                                controller.employeeChangesFirstApprovalList.value[index].type!=null ?Text(
                                     AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].type),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ):Text('-',style: TextStyle(color: backgroundIconColor)),
                               ],
                             ),
 

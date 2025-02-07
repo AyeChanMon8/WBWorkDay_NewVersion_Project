@@ -82,15 +82,15 @@ class Fleet_insurance {
     // if (map == null) return null;
 
     return Fleet_insurance(
-      id: map['id'],
+      id: map['id'] ?? 0,
       vehicleId: map['vehicle_id'],
       insuranceTypeId: map['insurance_type_id'],
-      insuranceCompany: map['insurance_company'],
-      startDate: map['start_date'],
-      endDate: map['end_date'],
-      contactPerson: map['contact_person'],
-      contactPhone: map['contact_phone'],
-      by: map['by'],
+      insuranceCompany: map['insurance_company'] ?? "",
+      startDate: map['start_date'] ?? "",
+      endDate: map['end_date'] ?? "",
+      contactPerson: map['contact_person'] ?? "",
+      contactPhone: map['contact_phone'] ?? "",
+      by: map['by'] ?? "",
       attachmentId: map['attachment_id'],
     );
   }

@@ -51,9 +51,9 @@ class RatingConfig {
 
   factory RatingConfig.fromMap(Map<String, dynamic> map) {
     return new RatingConfig(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      rating_description: map['rating_description'] as String
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      rating_description: map['rating_description'] ?? ""
     );
   }
 

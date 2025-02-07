@@ -518,8 +518,8 @@ class RewardsDetailsPage extends StatelessWidget {
           var name = AppUtils.removeNullString(controller
               .rewards[index].rewardActionId![pos].employee!.name
               .toString());
-          var mark = AppUtils.removeNullString(
-              controller.rewards[index].rewardActionId![pos].mark.toString());
+          var mark = controller.rewards[index].rewardActionId![pos].mark!=null ? AppUtils.removeNullString(
+              controller.rewards[index].rewardActionId![pos].mark.toString()) : '';
 
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

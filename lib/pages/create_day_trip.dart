@@ -334,10 +334,11 @@ class _CreateDayTripState extends State<CreateDayTrip>
                                 style: maintitlenoBoldStyle(),
                               ),
                               SizedBox(height: 5),
-                              AutoSizeText(
+                              dayTripModel.spare1Id!.name!=null ?AutoSizeText(
                                 '${AppUtils.removeNullString(dayTripModel.spare1Id!.name)}',
                                 style: maintitleStyle(),
-                              )
+                              ):Text('-',
+                              style: maintitleStyle(),)
                             ],
                           )),
                           SizedBox(
@@ -870,8 +871,8 @@ class _CreateDayTripState extends State<CreateDayTrip>
                               child:
                                   Text(labels.product, style: pmstitleStyle())),
                           Expanded(
-                              child: Text(AppUtils.removeNullString(
-                                  fuelIn_ids.productId.name)))
+                              child: fuelIn_ids.productId.name!=null ? Text(AppUtils.removeNullString(
+                                  fuelIn_ids.productId.name)): Text('-')) 
                         ],
                       ),
                       SizedBox(
@@ -885,8 +886,8 @@ class _CreateDayTripState extends State<CreateDayTrip>
                             style: pmstitleStyle(),
                           )),
                           Expanded(
-                              child: Text(AppUtils.removeNullString(
-                                  fuelIn_ids.location_id.name)))
+                              child: fuelIn_ids.location_id.name!=null ?Text(AppUtils.removeNullString(
+                                  fuelIn_ids.location_id.name)):Text('-'))
                         ],
                       ),
                       SizedBox(
@@ -900,9 +901,9 @@ class _CreateDayTripState extends State<CreateDayTrip>
                             style: pmstitleStyle(),
                           )),
                           Expanded(
-                              child: Text(
+                              child: fuelIn_ids.slip_no!=null ? Text(
                                   AppUtils.removeNullString(fuelIn_ids.slip_no)
-                                      .toString()))
+                                      .toString()) : Text('-'))
                         ],
                       ),
                       SizedBox(
@@ -1806,8 +1807,8 @@ class _CreateDayTripState extends State<CreateDayTrip>
                             style: pmstitleStyle(),
                           )),
                           Expanded(
-                              child: Text(AppUtils.removeNullString(
-                                  advance_ids.remark)))
+                              child: advance_ids.remark!=null ? Text(AppUtils.removeNullString(
+                                  advance_ids.remark)):Text('-'))
                         ],
                       ),
                       SizedBox(

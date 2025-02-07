@@ -101,18 +101,18 @@ class Resignation {
     // if (map == null) return null;
 
     return Resignation(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       employeeId: Employee_id.fromMap(map['employee_id']),
       departmentId: Department_id.fromMap(map['department_id']),
-      employeeContract: map['employee_contract'],
+      employeeContract: map['employee_contract'] ?? "",
       resignationType: map['resignation_type'],
-      reason: map['reason'],
+      reason: map['reason'] ?? "",
       joinedDate: map['joined_date'],
       expectedRevealingDate: map['expected_revealing_date'] ?? '',
-      approvedRevealingDate: map['approved_revealing_date'],
-      noticePeriod: map['notice_period'],
-      confirm_date: map['resign_confirm_date'],
+      approvedRevealingDate: map['approved_revealing_date'] ?? "",
+      noticePeriod: map['notice_period'] ?? "",
+      confirm_date: map['resign_confirm_date'] ?? "",
       company_id: Employee_id.fromMap(map['company_id']),
       branch_id: Employee_id.fromMap(map['branch_id']),
     );

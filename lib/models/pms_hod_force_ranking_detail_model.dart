@@ -108,8 +108,8 @@ class HODEmployee {
 
   factory HODEmployee.fromMap(Map<String, dynamic> map) {
     return new HODEmployee(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -221,9 +221,9 @@ class HODForceRankingGroupId {
 
     return HODForceRankingGroupId(
       id: map['id'],
-      forceTemplateId: map['force_template_id'],
+      forceTemplateId: map['force_template_id'] ?? 0,
       name: map['name']??"",
-      state: map['state'],
+      state: map['state'] ?? "",
       rankingEmployee: List<HODRankingEmployee>.from(
           map['employees']?.map((x) => HODRankingEmployee.fromMap(x))),
       managerForceRankingTemplate: List<ManagerForceRankingTemplate>.from(

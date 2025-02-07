@@ -105,12 +105,12 @@ class TravelLine {
     // if (map == null) return null;
 
     return TravelLine(
-      date: map['date'],
+      date: map['date'] ?? "",
       destination: map['destination'] ?? "",
       purpose: map['purpose'] ?? "",
-      dayofweek: map['dayofweek'],
-      start_date: map['start_date'],
-      end_date: map['end_date'],
+      dayofweek: map['dayofweek'] ?? "",
+      start_date: map['start_date'] ?? "",
+      end_date: map['end_date'] ?? "",
       full: map['full'] ?? false,
       first: map['first'] ?? false,
       second: map['second'] ?? false,

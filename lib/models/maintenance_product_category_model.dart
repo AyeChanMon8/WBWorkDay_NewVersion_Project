@@ -111,9 +111,9 @@ class Maintenance_product_category_model {
     // if (map == null) return null;
 
     return Maintenance_product_category_model(
-      id: map['id'],
-      name: map['name'],
-      displayName: map['display_name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      displayName: map['display_name'] ?? "",
       parentId:Parent_id.fromMap(map['parent_id']),
       delivery: map['delivery'],
       fuel: map['fuel'],
@@ -127,8 +127,8 @@ class Maintenance_product_category_model {
       hr: map['hr'],
       admin: map['admin'],
       purchase: map['purchase'],
-      propertyCostMethod: map['property_cost_method'],
-      propertyValuation: map['property_valuation'],
+      propertyCostMethod: map['property_cost_method'] ?? "",
+      propertyValuation: map['property_valuation'] ?? "",
     );
   }
 

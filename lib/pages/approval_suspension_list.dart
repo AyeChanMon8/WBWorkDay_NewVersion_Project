@@ -67,16 +67,17 @@ class _ApprovalSuspensionListState extends State<ApprovalSuspensionList> {
                               arguments: index);
                         },
                         child: ListTile(
-                            leading: Text(AppUtils.removeNullString(controller.suspensionApprovalList.value[index].name
-                            )),
+                            leading: controller.suspensionApprovalList.value[index].name!=null ? Text(AppUtils.removeNullString(controller.suspensionApprovalList.value[index].name
+                            )):Text('-'),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                controller.suspensionApprovalList.value[index].employeeId!=null && controller.suspensionApprovalList.value[index].employeeId!.name!=null ?Text(
                                     AppUtils.removeNullString(controller.suspensionApprovalList.value[index].employeeId!.name),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ):Text('-',
+                                style: TextStyle(color: backgroundIconColor)),
                               ],
                             ),
 

@@ -1327,15 +1327,15 @@ class Fuelin_ids {
     // if (map == null) return null;
 
     return Fuelin_ids(
-      date: map['date'],
-      shop: map['shop'],
+      date: map['date'] ?? "",
+      shop: map['shop'] ?? "",
       productId: Product_id.fromMap(map['product_id']),
       slipNo: map['slip_no'],
-      liter: map['liter'],
-      priceUnit: map['price_unit'],
-      amount: map['amount'],
+      liter: map['liter'] ?? 0.0,
+      priceUnit: map['price_unit'] ?? 0.0,
+      amount: map['amount'] ?? 0.0,
       location_id: Stock_location.fromMap(map['location_id']),
-      id: map['id'],
+      id: map['id'] ?? 0,
       add_from_office: map['add_from_office'] ?? false,
     );
   }
@@ -1517,7 +1517,7 @@ class PlanTrip_Consumption_ids {
       standardLiter: map['standard_liter'],
       consumedLiter: map['consumed_liter'],
       description: map['description'],
-      id: map['id'],
+      id: map['id'] ?? 0,
     );
   }
 
@@ -1668,10 +1668,10 @@ class Expense_ids {
     return Expense_ids(
       routeExpenseId: Route_expense_id.fromMap(map['route_expense_id']),
       eRouteId: ERoute_id.fromMap(map['route_id']),
-      standardAmount: map['standard_amount'],
-      actualAmount: map['actual_amount'],
-      overAmount: map['over_amount'],
-      id: map['id'],
+      standardAmount: map['standard_amount'] ?? 0.0,
+      actualAmount: map['actual_amount'] ?? 0.0,
+      overAmount: map['over_amount'] ?? 0.0,
+      id: map['id'] ?? 0,
       attachement_image: map['attached_file'] ?? "",
       description: map['description'] ?? "",
     );
@@ -1817,8 +1817,8 @@ class Route_expense_id {
 
   factory Route_expense_id.fromMap(Map<String, dynamic> map) {
     return new Route_expense_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -2241,8 +2241,8 @@ class Driver_id {
 
   factory Driver_id.fromMap(Map<String, dynamic> map) {
     return new Driver_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -2311,8 +2311,8 @@ class Vehicle_id {
     // if (map == null) return null;
 
     return Vehicle_id(
-        id: map['id'],
-        name: map['name'],
+        id: map['id'] ?? 0,
+        name: map['name'] ?? "",
         inchargeId: Incharge_id.fromMap(map['incharge_id']));
   }
 

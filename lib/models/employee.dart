@@ -281,14 +281,14 @@ class Employee {
     // if (map == null) return null;
 
     return Employee(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       image_128: map['image_128'] ?? "",
       job_title: map['job_title'] ?? "",
       department_id: Department.fromMap(map['department_id']),
       job_id: Job.fromMap(map['job_id']),
       work_location: map['work_location'] ?? "",
-      mobile_phone: map['mobile_phone'],
+      mobile_phone: map['mobile_phone'] ?? "",
       work_email: map['work_email'] ?? "",
       company_id: Company.fromMap(map['company_id']),
       parent_id: Partner.fromMap(map['parent_id']),

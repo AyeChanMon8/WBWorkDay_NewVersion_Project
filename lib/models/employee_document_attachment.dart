@@ -62,8 +62,8 @@ class Attachment {
     // if (map == null) return null;
 
     return Attachment(
-      type: map['type'],
-      data: map['data']
+      type: map['type'] ?? "",
+      data: map['data'] ?? ""
     );
   }
 

@@ -158,20 +158,20 @@ class Fleet_model {
     // if (map == null) return null;
 
     return Fleet_model(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       modelId: Model_id.fromMap(map['model_id']),
-      licensePlate: map['license_plate'],
+      licensePlate: map['license_plate'] ?? "",
       tagIds:
           List<Tag_ids>.from(map['tag_ids']?.map((x) => Tag_ids.fromMap(x))),
       lastEngineOff: map['last_engine_off'],
       image128: map['image_128']?? "",
       driverId: Driver_id.fromMap(map['driver_id']),
-      odometer: map['odometer'],
-      odometerUnit: map['odometer_unit'],
+      odometer: map['odometer'] ?? 0.0,
+      odometerUnit: map['odometer_unit'] ?? "",
       fuelType: map['fuel_type'],
-      acquisitionDate: map['acquisition_date'],
-      horsepower: map['horsepower'],
+      acquisitionDate: map['acquisition_date'] ?? "",
+      horsepower: map['horsepower'] ?? 0,
       vinSn: map['vin_sn'],
       traccarUniqueID: map['traccar_uniqueID'],
       color: map['color'],
@@ -184,11 +184,11 @@ class Fleet_model {
               ?.map((x) => ConsumptionAverageHistory.fromMap(x))),
       tire_history: List<TypredHistory>.from(
           map['fleet_tyre_history_ids']?.map((x) => TypredHistory.fromMap(x))),
-      dayTripAccess: map['day_trip_access'],
-      planTripProductAccess: map['plan_trip_product_access'],
-      planTripWaybillAccess: map['plan_trip_waybill_access'],
-      outOfPocketAccess: map['out_of_pocket_access'],
-      travelExpenseAccess: map['travel_expense_access'],
+      dayTripAccess: map['day_trip_access'] ?? false,
+      planTripProductAccess: map['plan_trip_product_access'] ?? false,
+      planTripWaybillAccess: map['plan_trip_waybill_access'] ?? false,
+      outOfPocketAccess: map['out_of_pocket_access'] ?? false,
+      travelExpenseAccess: map['travel_expense_access'] ?? false,
     );
   }
 
@@ -801,7 +801,7 @@ class ConsumptionAverageHistory {
       consumption_liter: map['consumption_liter'] ?? 0.0,
       odometer: map['odometer'] ?? 0.0,
       great_average: map['great_average'] ?? 0.0,
-      source_doc: map['source_doc'] ?? 0.0
+      source_doc: map['source_doc'] ?? ""
     );
   }
 

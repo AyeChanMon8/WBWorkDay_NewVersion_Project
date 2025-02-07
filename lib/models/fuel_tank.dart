@@ -90,17 +90,17 @@ class Fuel_tank {
     return Fuel_tank(
       id: map['id'] ?? 0,
       name: map['name'] ?? '',
-      capacity: map['capacity'],
+      capacity: map['capacity'] ?? 0.0,
       location: map['location'],
       lastCleanDate: map['last_clean_date'],
-      liters: map['liters'],
-      averagePrice: map['average_price'],
+      liters: map['liters'] ?? 0.0,
+      averagePrice: map['average_price'] ?? 0.0,
       lastFillingDate: map['last_filling_date'],
-      lastFillingPriceLiter: map['last_filling_price_liter'],
+      lastFillingPriceLiter: map['last_filling_price_liter'] ?? 0.0,
       fuleFillingHistoryIds: map['fule_filling_history_ids'] == null ? null : List<Fuel_History>.from(
           map['fule_filling_history_ids']?.map((x) => Fuel_History.fromMap(x))),
       // fuleFillingHistoryIds: map['fule_filling_history_ids'],
-      percentageFuel: map['percentage_fuel'],
+      percentageFuel: map['percentage_fuel'] ?? "",
       lastFuelAddingDate: map['last_fuel_adding_date'],
     );
   }

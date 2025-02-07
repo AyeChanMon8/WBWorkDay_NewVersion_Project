@@ -230,14 +230,19 @@ class _ApprovedLoanDetailsState extends State<ApprovedLoanDetails> {
                         Expanded(
                           flex: 1,
                           child: Container(
-                            child: Text(
+                            child: controller
+                                  .loanApprovedList
+                                  .value[index]
+                                  .company_id!
+                                  .name!=null ? Text(
                               AppUtils.removeNullString(controller
                                   .loanApprovedList
                                   .value[index]
                                   .company_id!
                                   .name),
                               style: subtitleStyle(),
-                            ),
+                            ):Text('-',
+                            style: subtitleStyle(),),
                           ),
                         ),
                         Expanded(
@@ -245,14 +250,19 @@ class _ApprovedLoanDetailsState extends State<ApprovedLoanDetails> {
                           child: Container(
                             child: Padding(
                               padding: const EdgeInsets.only(left: 28.0),
-                              child: Text(
+                              child: controller
+                                    .loanApprovedList
+                                    .value[index]
+                                    .branch_id!
+                                    .name!=null ? Text(
                                 AppUtils.removeNullString(controller
                                     .loanApprovedList
                                     .value[index]
                                     .branch_id!
                                     .name),
                                 style: subtitleStyle(),
-                              ),
+                              ):Text('-',
+                              style: subtitleStyle(),),
                             ),
                           ),
                         ),

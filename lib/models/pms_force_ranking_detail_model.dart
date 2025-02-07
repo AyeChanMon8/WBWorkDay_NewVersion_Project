@@ -108,8 +108,8 @@ class Approve_manager {
 
   factory Approve_manager.fromMap(Map<String, dynamic> map) {
     return new Approve_manager(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -206,9 +206,9 @@ class ForceRankingGroupId {
 
     return ForceRankingGroupId(
       id: map['id'],
-      forceTemplateId: map['force_template_id'],
+      forceTemplateId: map['force_template_id'] ?? 0,
       name: map['name']??"",
-      state: map['state'],
+      state: map['state'] ?? "",
       rankingEmployee: List<RankingEmployee>.from(
           map['employees']?.map((x) => RankingEmployee.fromMap(x))),
       midFromDate: map['mid_from_date'],

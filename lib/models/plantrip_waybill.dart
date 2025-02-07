@@ -166,13 +166,13 @@ class Plantrip_waybill {
     // if (map == null) return null;
 
     return Plantrip_waybill(
-      id: map['id'],
+      id: map['id'] ?? 0,
       name: map['name'],
-      code: map['code'],
-      fromDatetime: map['from_datetime'],
-      toDatetime: map['to_datetime'],
-      duration: map['duration'],
-      state: map['state'],
+      code: map['code'] ?? "",
+      fromDatetime: map['from_datetime'] ?? "",
+      toDatetime: map['to_datetime'] ?? "",
+      duration: map['duration'] ?? 0.0,
+      state: map['state'] ?? "",
       vehicleId: Vehicle_id.fromMap(map['vehicle_id']),
       createUid: Create_uid.fromMap(map['create_uid']),
       driverId: Driver_id.fromMap(map['driver_id']),
@@ -186,12 +186,12 @@ class Plantrip_waybill {
           map['expense_ids']?.map((x) => WayBill_Expense_ids.fromMap(x))),
       consumptionIds: List<Consumption_ids>.from(
           map['consumption_ids']?.map((x) => Consumption_ids.fromMap(x))),
-      lastOdometer: map['last_odometer'],
-      currentOdometer: map['current_odometer'],
-      tripDistance: map['trip_distance'],
-      totalStandardLiter: map['total_standard_liter'],
-      totalConsumedLiter: map['total_consumed_liter'],
-      avgCalculation: map['avg_calculation'],
+      lastOdometer: map['last_odometer'] ?? 0.0,
+      currentOdometer: map['current_odometer'] ?? 0.0,
+      tripDistance: map['trip_distance'] ?? 0.0,
+      totalStandardLiter: map['total_standard_liter'] ?? 0,
+      totalConsumedLiter: map['total_consumed_liter'] ?? 0.0,
+      avgCalculation: map['avg_calculation'] ?? 0.0,
       fuelinIds: List<WayBill_Fuelin_ids>.from(
           map['fuelin_ids']?.map((x) => WayBill_Fuelin_ids.fromMap(x))),
       commissionIds: List<Commission_ids>.from(
@@ -199,7 +199,7 @@ class Plantrip_waybill {
       requestAllowanceLines: List<WayBill_Request_allowance_lines>.from(
           map['request_allowance_lines']
               ?.map((x) => WayBill_Request_allowance_lines.fromMap(x))),
-      totalAdvance: map['advance_allowed'],
+      totalAdvance: map['advance_allowed'] ?? 0.0,
       startTripResponsible: map['start_trip_responsible'] ?? '',
       endTripResponsible: map['end_trip_responsible'] ?? ''
     );

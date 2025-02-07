@@ -79,13 +79,13 @@ class Suspension {
     // if (map == null) return null;
 
     return Suspension(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
       employeeId: Employee_id.fromMap(map['employee_id']),
       departmentId: Department_id.fromMap(map['department_id']),
-      suspension_reason: map['suspension_reason'],
+      suspension_reason: map['suspension_reason'] ?? "",
       joinedDate: map['joined_date'],
-      approvedRevealingDate: map['approved_revealing_date'],
+      approvedRevealingDate: map['approved_revealing_date'] ?? "",
       company_id: Employee_id.fromMap(map['company_id']),
       branch_id: Employee_id.fromMap(map['branch_id']),
       job_id: Job_id.fromMap(map['job_id']),
@@ -250,8 +250,8 @@ class Department_id {
     // if (map == null) return null;
 
     return Department_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -328,8 +328,8 @@ class Job_grade_id {
     // if (map == null) return null;
 
     return Job_grade_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -406,8 +406,8 @@ class Job_id {
     // if (map == null) return null;
 
     return Job_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -487,8 +487,8 @@ class Employee_id {
     // if (map == null) return null;
 
     return Employee_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

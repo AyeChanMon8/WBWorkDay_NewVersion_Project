@@ -257,10 +257,11 @@ class _ApprovedSuspensionDetailsState extends State<ApprovedSuspensionDetails> {
                             child: Container(
                               child: Padding(
                                 padding: const EdgeInsets.only(left:50.0),
-                                child: Text(
+                                child: controller.suspensionApprovedList.value[index].job_grade_id!.name!=null ? Text(
                                   AppUtils.removeNullString(controller.suspensionApprovedList.value[index].job_grade_id!.name),
                                   style: subtitleStyle(),
-                                ),
+                                ):Text('-',
+                                style: subtitleStyle()),
                               ),
                             ),
                           ),

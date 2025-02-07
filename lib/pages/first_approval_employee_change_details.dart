@@ -292,10 +292,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesFirstApprovalList.value[index].newCompanyId.name!=null ?Text(
                           AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].newCompanyId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),
@@ -317,10 +318,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesFirstApprovalList.value[index].newBranchId.name!=null? Text(
                           AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].newBranchId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),
@@ -342,10 +344,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesFirstApprovalList.value[index].newDepartmentId.name!=null? Text(
                           AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].newDepartmentId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle(),),
                       ),
                     ],
                   ),
@@ -367,10 +370,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesFirstApprovalList.value[index].newJobId.name!=null ? Text(
                           AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].newJobId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle(),),
                       ),
                     ],
                   ),
@@ -392,10 +396,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesFirstApprovalList.value[index].newJobGradeId.name!=null ? Text(
                           AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].newJobGradeId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),
@@ -416,10 +421,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                         ),
                       ),
                       Container(
-                        child: Text(
+                        child: controller.employeeChangesFirstApprovalList.value[index].newSalaryLevelId.name!=null? Text(
                           AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].newSalaryLevelId.name),
                           style: subtitleStyle(),
-                        ),
+                        ):Text('-',
+                        style: subtitleStyle()),
                       ),
                     ],
                   ),
@@ -468,10 +474,11 @@ class _FirstApprovalEmployeeChangeDetailsState extends State<FirstApprovalEmploy
                       ),
                       Container(
                         child: Expanded(
-                          child: Text(
+                          child: controller.employeeChangesFirstApprovalList.value[index].note!=null ? Text(
                             AppUtils.removeNullString(controller.employeeChangesFirstApprovalList.value[index].note),
                             style: subtitleStyle(),
-                          ),
+                          ):Text('-',
+                          style: subtitleStyle()),
                         ),
                       ),
                     ],

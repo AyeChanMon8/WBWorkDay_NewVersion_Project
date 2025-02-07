@@ -37,9 +37,9 @@ class LeaveType {
     // if (map == null) return null;
 
     return LeaveType(
-      id: map['id'],
-      name: map['name'],
-      show_in_mobile_app: map['show_in_mobile_app']
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      show_in_mobile_app: map['show_in_mobile_app'] ?? false
     );
   }
 

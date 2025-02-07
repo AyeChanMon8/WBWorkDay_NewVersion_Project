@@ -65,8 +65,8 @@ class OvertimeResponseDetails extends StatelessWidget {
 
   Widget overtimeAcceptData(BuildContext context, index) {
     final labels = AppLocalizations.of(context);
-    var startDate = AppUtils.changeDateTimeFormat(controller.otAcceptedList.value[index].start_date);
-    var endDate = AppUtils.changeDateTimeFormat(controller.otAcceptedList.value[index].end_date);
+    var startDate = controller.otAcceptedList.value[index].start_date!=null ? AppUtils.changeDateTimeFormat(controller.otAcceptedList.value[index].start_date) : "";
+    var endDate = controller.otAcceptedList.value[index].end_date!=null ?AppUtils.changeDateTimeFormat(controller.otAcceptedList.value[index].end_date) : "";
     return Obx(()=>Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: Column(
@@ -221,8 +221,8 @@ class OvertimeResponseDetails extends StatelessWidget {
 
   Widget overtimeDraftData(BuildContext context, index) {
     final labels = AppLocalizations.of(context);
-    var startDate = AppUtils.changeDateTimeFormat(controller.otDraftList.value[index].start_date);
-    var endDate = AppUtils.changeDateTimeFormat(controller.otDraftList.value[index].end_date);
+    var startDate = controller.otDraftList.value[index].start_date!=null ? AppUtils.changeDateTimeFormat(controller.otDraftList.value[index].start_date) : "";
+    var endDate = controller.otDraftList.value[index].end_date!=null ?AppUtils.changeDateTimeFormat(controller.otDraftList.value[index].end_date) : "";
     return Obx(()=>Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: controller.otDraftList.length!= 0 ?Column(
@@ -377,8 +377,8 @@ class OvertimeResponseDetails extends StatelessWidget {
 
   Widget overtimeDeclinedData(BuildContext context, index) {
     final labels = AppLocalizations.of(context);
-    var startDate = AppUtils.changeDateTimeFormat(controller.otDeclinedList.value[index].start_date);
-    var endDate = AppUtils.changeDateTimeFormat(controller.otDeclinedList.value[index].end_date);
+    var startDate = controller.otDeclinedList.value[index].start_date!=null ? AppUtils.changeDateTimeFormat(controller.otDeclinedList.value[index].start_date) : "";
+    var endDate = controller.otDeclinedList.value[index].end_date!=null ? AppUtils.changeDateTimeFormat(controller.otDeclinedList.value[index].end_date) : "";
     return Obx(()=>Container(
       margin: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: Column(

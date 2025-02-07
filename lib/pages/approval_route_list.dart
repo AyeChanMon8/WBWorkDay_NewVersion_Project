@@ -79,10 +79,11 @@ class _ApprovalRouteListState extends State<ApprovalRouteList> {
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            controller.routeApprovalList.value[index].name!=null ? Text(
                               AppUtils.removeNullString(controller.routeApprovalList.value[index].name),
                               style: TextStyle(color: backgroundIconColor),
-                            ),
+                            ):Text('-',
+                            style: TextStyle(color: backgroundIconColor),),
                             SizedBox(height: 5),
                             Text(
                               controller.routeApprovalList.value[index]

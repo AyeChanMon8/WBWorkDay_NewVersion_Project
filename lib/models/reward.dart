@@ -83,7 +83,7 @@ class Reward {
     // if (map == null) return null;
 
     return Reward(
-      id: map['id'],
+      id: map['id'] ?? 0,
       employeeId: List<Employee_id>.from(
           map['employee_id']?.map((x) => Employee_id.fromMap(x))),
       rewardTypeId: List<Reward_type_id>.from(
@@ -94,10 +94,10 @@ class Reward {
           map['manager_reward_ids']?.map((x) => RewardAction.fromMap(x))),
       warningAttachId: List<WarningAttachModel>.from(
           map['warning_attach_id']?.map((x) => WarningAttachModel.fromMap(x))),
-      state: map['state'],
-      date: map['date'],
-      description: map['description'],
-      mark: map['mark'],
+      state: map['state'] ?? "",
+      date: map['date'] ?? "",
+      description: map['description'] ?? "",
+      mark: map['mark'] ?? 0.0,
       code: map['code'] ?? "",
     );
   }
@@ -367,8 +367,8 @@ class Reward_title_id {
     // if (map == null) return null;
 
     return Reward_title_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -445,8 +445,8 @@ class Reward_type_id {
     // if (map == null) return null;
 
     return Reward_type_id(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -542,11 +542,11 @@ class Employee_id {
     // if (map == null) return null;
 
     return Employee_id(
-      id: map['id'],
-      name: map['name'],
-      rewardCarriedForward: map['reward_carried_forward'],
-      rewardThisYear: map['reward_this_year'],
-      rewardTotal: map['reward_total'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      rewardCarriedForward: map['reward_carried_forward'] ?? 0.0,
+      rewardThisYear: map['reward_this_year'] ?? 0.0,
+      rewardTotal: map['reward_total'] ?? 0.0,
     );
   }
 

@@ -61,16 +61,17 @@ class _ApprovalResignationListState extends State<ApprovalResignationList> {
                               arguments: index);
                         },
                         child: ListTile(
-                            leading: Text(AppUtils.removeNullString(controller.resignationApprovalList[index].name
-                            )),
+                            leading: controller.resignationApprovalList[index].name!=null ? Text(AppUtils.removeNullString(controller.resignationApprovalList[index].name
+                            )):Text('-'),
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                controller.resignationApprovalList.value[index].employeeId!=null && controller.resignationApprovalList.value[index].employeeId!.name!=null? Text(
                                     AppUtils.removeNullString(controller.resignationApprovalList.value[index].employeeId!.name),
                                     style: TextStyle(color: backgroundIconColor)
 
-                                ),
+                                ):Text('-',
+                                style: TextStyle(color: backgroundIconColor)),
                               ],
                             ),
 

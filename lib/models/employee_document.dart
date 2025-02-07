@@ -72,14 +72,14 @@ class Employee_document {
     // if (map == null) return null;
 
     return Employee_document(
-        id: map['id'],
-        name: map['name'],
+        id: map['id'] ?? 0,
+        name: map['name'] ?? "",
         employeeRef: Employee_ref.fromMap(map['employee_ref']),
         documentType: Document_type.fromMap(map['document_type']),
-        issueDate: map['issue_date'],
+        issueDate: map['issue_date'] ?? "",
         expiryDate: map['expiry_date'],
         notificationType: map['notification_type'],
-        beforeDays: map['before_days'],
+        beforeDays: map['before_days'] ?? 0,
         description: map['description']);
   }
 

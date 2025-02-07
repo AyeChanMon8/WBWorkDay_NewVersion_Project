@@ -107,19 +107,19 @@ class Insurancetypemodel {
     // if (map == null) return null;
 
     return Insurancetypemodel(
-      id: map['id'],
-      policyType: map['policy_type'],
-      policyNumber: map['policy_number'],
-      benefit: map['benefit'],
-      policyCoverage: map['policy_coverage'],
-      effectiveDate: map['effective_date'],
-      expireDate: map['expire_date'],
-      premiumAmount: map['premium_amount'],
-      coverageAmount: map['coverage_amount'],
-      feesEmployee: map['fees_employee'],
-      feesEmployer: map['fees_employer'],
-      installment: map['installment'],
-      deductionPerMonth: map['deduction_per_month'],
+      id: map['id'] ?? 0,
+      policyType: map['policy_type'] ?? "",
+      policyNumber: map['policy_number'] ?? 0,
+      benefit: map['benefit'] ?? "",
+      policyCoverage: map['policy_coverage'] ?? "",
+      effectiveDate: map['effective_date'] ?? "",
+      expireDate: map['expire_date'] ?? "",
+      premiumAmount: map['premium_amount'] ?? 0.0,
+      coverageAmount: map['coverage_amount'] ?? 0.0,
+      feesEmployee: map['fees_employee'] ?? 0.0,
+      feesEmployer: map['fees_employer'] ?? 0.0,
+      installment: map['installment'] ?? 0,
+      deductionPerMonth: map['deduction_per_month'] ?? 0.0,
       attachmentId: map['attachment_id'] == null ? null : List<Attachment_id>.from(
           map['attachment_id']?.map((x) => Attachment_id.fromMap(x))),
     );
@@ -294,8 +294,8 @@ class Attachment_id {
   factory Attachment_id.fromMap(Map<String, dynamic> map) {
     // if (map == null) return null;
 
-    return Attachment_id(id: map['id'], name: map['name'],type: map['type'], url: map['url'],datas: map['datas'], mimetype: map['mimetype'],
-    indexContent: map['index_content']);
+    return Attachment_id(id: map['id'] ?? 0, name: map['name'] ?? "",type: map['type'] ?? "", url: map['url'],datas: map['datas'] ?? "", mimetype: map['mimetype'] ?? "",
+    indexContent: map['index_content'] ?? "");
   }
 
   String toJson() => json.encode(toMap());

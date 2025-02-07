@@ -108,7 +108,7 @@ class Reminder {
       lastReminder: map['last_reminder'],
       attachment_ids: List<AttachmentID>.from(
          map['attachment_ids']?.map((x) => AttachmentID.fromMap(x))),
-      create_date: map['create_date'],
+      create_date: map['create_date'] ?? "",
       selected: map['selected']?? false,
       has_read: map['has_read'],
       noti_id: map['noti_id'],
@@ -285,9 +285,9 @@ class AttachmentID {
 
   factory AttachmentID.fromMap(Map<String, dynamic> map) {
     return new AttachmentID(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      attach_file: map['attach_file'] as String
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      attach_file: map['attach_file'] ?? ""
     );
   }
 

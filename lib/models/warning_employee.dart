@@ -48,11 +48,11 @@ class WarningEmployee {
     // if (map == null) return null;
 
     return WarningEmployee(
-      id: map['id'],
-      name: map['name'],
-      warning_carried_forward: map['warning_carried_forward'],
-      warning_this_year: map['warning_this_year'],
-      warning_total: map['warning_total'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      warning_carried_forward: map['warning_carried_forward'] ?? 0.0,
+      warning_this_year: map['warning_this_year'] ?? 0.0,
+      warning_total: map['warning_total'] ?? 0.0,
     );
   }
 

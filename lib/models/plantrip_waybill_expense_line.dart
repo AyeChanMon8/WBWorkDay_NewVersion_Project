@@ -41,11 +41,11 @@ class Plantrip_waybill_expense_line {
     // if (map == null) return null;
 
     return Plantrip_waybill_expense_line(
-      tripWaybillId: map['trip_waybill_id'],
-      routeExpenseId: map['route_expense_id'],
-      actualAmount: map['actual_amount'],
-      description: map['description'],
-      image: map['attached_file'],
+      tripWaybillId: map['trip_waybill_id'] ?? 0,
+      routeExpenseId: map['route_expense_id'] ?? 0,
+      actualAmount: map['actual_amount'] ?? 0.0,
+      description: map['description'] ?? "",
+      image: map['attached_file'] ?? "",
     );
   }
 
