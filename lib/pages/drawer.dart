@@ -208,6 +208,7 @@ class DrawerPage extends StatelessWidget {
                   onPressed: () {
                     box.write('emp_image', "");
                     box.write('login_employee_id', "");
+                    box.write('show_hod', false);
                     OneSignal.shared.removeExternalUserId();
                     Get.offAllNamed(Routes.LOGIN);
                     //Get.offAll(LoginPage());

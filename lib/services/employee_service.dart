@@ -160,6 +160,21 @@ class EmployeeService extends OdooService {
     return response.toString();
   }
 
+  Future<bool> showHODorNot(int empID) async {
+    String url = Globals.baseURL + "/hr.employee/1/show_hod_or_not";
+    Response response =
+        await dioClient.put(url, data: jsonEncode({'employee_id': empID}));
+    bool result = false;
+    if (response.statusCode == 200) {
+      if(response.data){
+          result = true;
+      }else{
+          result = false;
+      }
+    }
+    return result;
+  }
+
   Future<List<Loan>> fetchLoan(String empID, String offset) async {
     List<dynamic> empIds = await getEmployeeList(int.tryParse(empID)!);
     var dateBefore = AppUtils.threemonthago();

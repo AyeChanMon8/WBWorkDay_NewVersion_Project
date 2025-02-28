@@ -23,7 +23,7 @@ class Globals {
   static const String tokenDate = "TOKEN_DATE";
   static const String check_in_or_not = "false";
   static const int pag_limit = 100;
-  static const String app_version = "6.21.7";
+  static const String app_version = "6.21.8";
 
   static final List<MenuOptionsModel> languageOptions = [
     MenuOptionsModel(key: "en", value: "English"), //English

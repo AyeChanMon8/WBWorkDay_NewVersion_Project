@@ -73,6 +73,7 @@ class LoginController extends GetxController {
               box.write('password', passwordTextController.text);
             }
             checkRole(emp_id);
+            showHODorNot(emp_id);
           }
         }
         // else {
@@ -190,6 +191,19 @@ class LoginController extends GetxController {
         }
       //  Get.offNamed('/bottomnavigation');
 
+    });
+  }
+
+  void showHODorNot(String emp_id) async {
+    await employeeService?.showHODorNot(int.tryParse(emp_id)!).then((data) async {
+      final labels = AppLocalizations.of(Get.context!);
+      var storage = LocalStorage('storefunction');
+      bool value  = await storage.ready;
+      if(data){
+        box.write('show_hod', true);
+      }else{
+        box.write('show_hod', false);
+      }
     });
   }
 }

@@ -31,10 +31,12 @@ class _StatePmsTabBar extends State<PmsTabBar> {
   List data = [];
   int tabbar = 1;
   String role = '';
+  bool showHod = false;
   @override
   void initState() {
     super.initState();
     role = box.read('role_category');
+    showHod = box.read('show_hod') ?? false;
     List<String> result = getRole(role);
     if (result.isNotEmpty) {
       if (findUserRole(result, 'manager') != -1) {
@@ -43,7 +45,7 @@ class _StatePmsTabBar extends State<PmsTabBar> {
         role = 'dotted_line_manager';
       }
     }
-    tabbar = role == 'manager' || role == 'dotted_line_manager' ? 5 : 1;
+    tabbar = role == 'manager' || role == 'dotted_line_manager' ? showHod ? 5 : 4 : 1;
   }
 
   int findUserRole(List<String> roleList, String data) {
@@ -80,7 +82,9 @@ class _StatePmsTabBar extends State<PmsTabBar> {
               backgroundColor: backgroundIconColor,
               automaticallyImplyLeading: true,
               bottom: role == 'manager' || role == 'dotted_line_manager'
-                  ? TabBar(
+                  ? showHod ? TabBar(
+                      tabAlignment: TabAlignment.start,
+                      isScrollable: true,
                       labelColor: Colors.white,
                       unselectedLabelColor: Colors.grey,
                       indicatorColor: Color.fromRGBO(216, 181, 0, 1),
@@ -94,6 +98,22 @@ class _StatePmsTabBar extends State<PmsTabBar> {
                         Tab(text: labels.approved),
                         Tab(text: labels.manager_force_ranking),
                         Tab(text: labels.hod_force_ranking),
+                      ],
+                    ) : TabBar(
+                      tabAlignment: TabAlignment.start,
+                      isScrollable: true,
+                      labelColor: Colors.white,
+                      unselectedLabelColor: Colors.grey,
+                      indicatorColor: Color.fromRGBO(216, 181, 0, 1),
+                      indicatorWeight: 5,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      tabs: [
+                        Tab(
+                          text: labels!.self,
+                        ),
+                        Tab(text: labels.toApprove),
+                        Tab(text: labels.approved),
+                        Tab(text: labels.manager_force_ranking)
                       ],
                     )
                   : TabBar(
@@ -109,8 +129,10 @@ class _StatePmsTabBar extends State<PmsTabBar> {
                       ],
                     )),
           body: role == 'manager' || role == 'dotted_line_manager'
-              ? TabBarView(
+              ? showHod ? TabBarView(
                   children: [PmsPage(), PmsManagerPage(), PmsDonePage(),ManagerForceRankingPage(),HODForceRankingPage()],
+                ) : TabBarView(
+                  children: [PmsPage(), PmsManagerPage(), PmsDonePage(),ManagerForceRankingPage()],
                 )
               : TabBarView(
                   children: [

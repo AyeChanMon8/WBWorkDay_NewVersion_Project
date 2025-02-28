@@ -767,6 +767,11 @@ class TravelRequestService extends OdooService {
           created = 1;
         }
       }
+    }else {
+      //Globals.ph_hardware_back.value = true;
+      Get.back();
+      AppUtils.showErrorDialog(
+          response.toString(), response.statusCode.toString());
     }
     return created;
   }

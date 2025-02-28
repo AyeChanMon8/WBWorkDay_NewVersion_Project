@@ -220,19 +220,19 @@ class _PMSForceManagerDetailPageState extends State<PMSForceManagerDetailPage>
                             Expanded(
                                 flex: 2,
                                 child: Text(
-                                  'Employee',
+                                  'Name',
                                   style: TextStyle(color: backgroundIconColor),
                                 )),
                             Expanded(
                                 flex: 2,
                                 child: Text(
-                                  'Final Evaluation',
+                                  'Final Review',
                                   style: TextStyle(color: backgroundIconColor),
                                 )),
                             Expanded(
                                 flex: 2,
                                 child: Text(
-                                  'Manager Rating',
+                                  'Mgr Rating',
                                   style: TextStyle(color: backgroundIconColor),
                                 )),
                             Expanded(
@@ -261,9 +261,9 @@ class _PMSForceManagerDetailPageState extends State<PMSForceManagerDetailPage>
                         ),
                       ),
                       const SizedBox(height: 10),
-                      Expanded(
-                        child: Obx(
-                          () => ListView.builder(
+                      Obx(
+                          () => Expanded(
+                        child:  ListView.builder(
                               shrinkWrap: true,
                               //physics: NeverScrollableScrollPhysics(),
                               itemCount: controller.forceManagerdetailModel.value
@@ -413,7 +413,7 @@ class _PMSForceManagerDetailPageState extends State<PMSForceManagerDetailPage>
                                                         Expanded(
                                                             flex: 3,
                                                             child: Text(
-                                                              'Final Evaluation',
+                                                              'Final Review',
                                                               style:
                                                                   pmstitleStyle(),
                                                             )),

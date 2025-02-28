@@ -18,7 +18,12 @@ class NotificationService: UNNotificationServiceExtension {
         
         if let bestAttemptContent = bestAttemptContent {
             // Modify the notification content here...
-            bestAttemptContent.title = "\(bestAttemptContent.title) [modified]"
+            if bestAttemptContent.title.isEmpty {
+                print("Notification title is null or empty. Setting a default title.")
+                bestAttemptContent.title = "WB Work Day"
+            }else{
+                bestAttemptContent.title = "\(bestAttemptContent.title)"
+            }
             
             contentHandler(bestAttemptContent)
         }

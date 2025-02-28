@@ -228,14 +228,14 @@ class _PMSHODForceManagerDetailPageState
                                 Expanded(
                                     flex: 2,
                                     child: Text(
-                                      'Employee',
+                                      'Name',
                                       style:
                                           TextStyle(color: backgroundIconColor),
                                     )),
                                 Expanded(
                                     flex: 2,
                                     child: Text(
-                                      'Manager Rating',
+                                      'Mgr Rating',
                                       style:
                                           TextStyle(color: backgroundIconColor),
                                     )),
