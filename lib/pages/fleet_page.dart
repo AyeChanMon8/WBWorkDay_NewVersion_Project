@@ -8,6 +8,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../controllers/FleetController.dart';
 // import '../localization.dart';
 import '../models/fleet_insurance.dart';
@@ -387,9 +388,14 @@ class _FleetPageState extends State<FleetPage> {
       ),
     );
   }
-  void _handleURLButtonPress(BuildContext context, String url) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+  void _handleURLButtonPress(BuildContext context, String url) async {
+    // Navigator.push(context,
+    //     MaterialPageRoute(builder: (context) => WebViewContainer(url)));
+    if (await canLaunchUrl(Uri.parse(url))) {
+              await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+            } else {
+              throw "Could not launch $url";
+            }
   }
   Widget InsuranceList(BuildContext context) {
     return Container(

@@ -12,6 +12,8 @@ import 'package:winbrother_hr_app/my_class/my_app_bar.dart';
 import 'package:winbrother_hr_app/my_class/my_style.dart';
 import 'package:winbrother_hr_app/utils/app_utils.dart';
 
+import '../controllers/pms_list_controller.dart';
+
 class PMSForceManagerDetailPage extends StatefulWidget {
    const PMSForceManagerDetailPage({super.key});
 
@@ -27,6 +29,8 @@ class _PMSForceManagerDetailPageState extends State<PMSForceManagerDetailPage>
   int empID = 0;
   PMSEmployeeDetailController controller =
       Get.put(PMSEmployeeDetailController());
+  // PmsListController pmsController =
+  //     Get.put(PmsListController());
   int forceRankingIndex = 0;
   int forceDetailIndex = 0;
   TextEditingController remarkTextController = TextEditingController();
@@ -34,8 +38,10 @@ class _PMSForceManagerDetailPageState extends State<PMSForceManagerDetailPage>
   void initState() {
     role = box.read('role_category');
     controller.forceManagerdetailModel.value = Get.arguments[0]['first'];
+    // getPMSDetail(Get.arguments[1]['second'], Get.arguments[2]['third']);
     forceRankingIndex = Get.arguments[1]['second'];
     forceDetailIndex = Get.arguments[2]['third'];
+    
     empID = int.tryParse(box.read('emp_id'))!;
 
     // if(controller.forceManagerdetailModel.value!=null){
@@ -47,6 +53,13 @@ class _PMSForceManagerDetailPageState extends State<PMSForceManagerDetailPage>
 
     super.initState();
   }
+
+  // Future<void> getPMSDetail(int forceRankingIndex, int forceDetailIndex) async{
+  //   var pmsList = await pmsController.getManagerPmsApprovalList();
+  //   controller.forceManagerRankingdetailModel.value = pmsList;
+  //   controller.forceManagerdetailModel.value  = controller.forceManagerRankingdetailModel
+  //       .value[forceDetailIndex].forceRankingGroupId![forceRankingIndex];
+  // }
 
   @override
   Widget build(BuildContext context) {

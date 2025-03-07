@@ -51,22 +51,56 @@ class PmsListController extends GetxController {
             barrierDismissible: false));
     //fetch emp_id from GetX Storage
     var employee_id = box.read('emp_id');
-
-    await pmsService?.getPmSelfList(int.tryParse(employee_id)! , offset.toString())
-        .then((data) {
-      if (offset != 0) {
+    await pmsService?.getPmSelfList(int.tryParse(employee_id)!,offset.toString()).then((data) {
+      // data.sort((a, b) =>
+      //     a.create_date.toString().compareTo(b.create_date.toString()));
+      if(offset!=0){
         // update data and loading status
         isLoading.value = false;
-        data.forEach((element) {
-          pmsDetailModels.add(element);
-        });
-      } else {
+        // data.forEach((element) {
+        //   leaveList.add(element);
+        // });
+        for(var i=0;i<data.length;i++){
+          pmsDetailModels.add(data[i]);
+        }
+      }else{
         pmsDetailModels.value = data;
       }
+      update();
       Get.back();
+      
     });
     return pmsDetailModels.value;
   }
+
+  // Future<List<PMSDetailModel>> getPmsList() async {
+  //   Future.delayed(
+  //       Duration.zero,
+  //       () => Get.dialog(
+  //           Center(
+  //               child: SpinKitWave(
+  //             color: Color.fromRGBO(63, 51, 128, 1),
+  //             size: 30.0,
+  //           )),
+  //           barrierDismissible: false));
+  //   //fetch emp_id from GetX Storage
+  //   var employee_id = box.read('emp_id');
+
+  //   await pmsService?.getPmSelfList(int.tryParse(employee_id)! , offset.toString())
+  //       .then((data) {
+  //     if (offset != 0) {
+  //       // update data and loading status
+  //       isLoading.value = false;
+  //       data.forEach((element) {
+  //         pmsDetailModels.value.add(element);
+  //       });
+  //     } else {
+  //       pmsDetailModels.value = data;
+  //     }
+  //     Get.back();
+  //   });
+  //   return pmsDetailModels.value;
+  // }
 
   Future<List<PMSDetailModel>> getPmsApprovalList() async {
     Future.delayed(
@@ -155,7 +189,7 @@ class PmsListController extends GetxController {
             barrierDismissible: false));
     var employee_id = box.read('emp_id');
     await pmsService!.getManagerPmsApprovalList(int.tryParse(employee_id)!, offset.toString())
-        .then((value) {
+        .then((value) async{
       if (offset != 0) {
         // update data and loading status
         isLoading.value = false;

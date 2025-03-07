@@ -13,6 +13,8 @@ import 'package:winbrother_hr_app/my_class/my_app_bar.dart';
 import 'package:winbrother_hr_app/my_class/my_style.dart';
 import 'package:winbrother_hr_app/utils/app_utils.dart';
 
+import '../controllers/pms_list_controller.dart';
+
 class PMSHODForceManagerDetailPage extends StatefulWidget {
   const PMSHODForceManagerDetailPage({ super.key});
 
@@ -30,6 +32,8 @@ class _PMSHODForceManagerDetailPageState
   int empID = 0;
   PMSEmployeeDetailController controller =
       Get.put(PMSEmployeeDetailController());
+  // PmsListController pmsController =
+  //     Get.put(PmsListController());
   int forceRankingIndex = 0;
   int forceDetailIndex = 0;
   bool isRatingMatch = true;
@@ -40,6 +44,7 @@ class _PMSHODForceManagerDetailPageState
   void initState() {
     role = box.read('role_category');
     controller.forceHODManagerdetailModel.value = Get.arguments[0]['first'];
+    // getHodPMSDetail(Get.arguments[1]['second'], Get.arguments[2]['third']);
     forceRankingIndex = Get.arguments[1]['second'];
     forceDetailIndex = Get.arguments[2]['third'];
     isRatingMatch = Get.arguments[3]['fourth'];
@@ -48,6 +53,15 @@ class _PMSHODForceManagerDetailPageState
     _tabController = TabController(length: 2, vsync: this);
     super.initState();
   }
+
+  // Future<void> getHodPMSDetail(forceRankingIndex, forceDetailIndex)async {
+  //   var pmsForceManagerList =
+  //       await pmsController!.getHODManagerPmsApprovalList();
+  //   // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
+  //   controller.forceHODManagerRankingdetailModel.value = pmsForceManagerList;
+  //   controller.forceHODManagerdetailModel.value = controller.forceHODManagerRankingdetailModel
+  //       .value[forceDetailIndex].forceRankingGroupId![forceRankingIndex];
+  // }
 
   @override
   Widget build(BuildContext context) {

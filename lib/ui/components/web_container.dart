@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
 class WebViewContainer extends StatefulWidget {
   final url;
   WebViewContainer(this.url);
@@ -16,11 +16,11 @@ class _WebViewContainerState extends State<WebViewContainer> {
         appBar: AppBar(),
         body: Column(
           children: [
-            Expanded(
-                child: WebView(
-                    key: _key,
-                    javascriptMode: JavascriptMode.unrestricted,
-                    initialUrl: _url))
+            // Expanded(
+            //     child: WebView(
+            //         key: _key,
+            //         javascriptMode: JavascriptMode.unrestricted,
+            //         initialUrl: _url))
           ],
         ));
   }

@@ -22,7 +22,7 @@ import 'package:winbrother_hr_app/pages/announcements_details.dart';
 import 'package:winbrother_hr_app/routes/app_pages.dart';
 import 'package:winbrother_hr_app/utils/app_utils.dart';
 //  import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+// import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'leave_detail.dart';
 
@@ -112,20 +112,20 @@ class _RemindersListState extends State<RemindersList> {
     }
   }
 
-  Widget pdfView(String pathPDF) {
-    print("pdfView");
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Document"),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.share),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: SfPdfViewer.network(pathPDF.toString()));
-  }
+  // Widget pdfView(String pathPDF) {
+  //   print("pdfView");
+  //   return Scaffold(
+  //       appBar: AppBar(
+  //         title: Text("Document"),
+  //         actions: <Widget>[
+  //           IconButton(
+  //             icon: Icon(Icons.share),
+  //             onPressed: () {},
+  //           ),
+  //         ],
+  //       ),
+  //       body: SfPdfViewer.network(pathPDF.toString()));
+  // }
 
   @override
   Widget build(BuildContext context) {

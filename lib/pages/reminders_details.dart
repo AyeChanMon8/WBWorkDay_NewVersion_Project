@@ -13,7 +13,7 @@ import 'package:intl/intl.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../constants/globals.dart';
 import '../controllers/announcements_controller.dart';
@@ -59,20 +59,20 @@ class RemindersDetails extends StatelessWidget {
       return file.path.toString();
     }
   }
-  Widget pdfView(String pathPDF){
-    print("pdfView");
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Document"),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.share),
-              onPressed: () {},
-            ),
-          ],
-        ),
-        body: SfPdfViewer.network(pathPDF.toString()),);
-  }
+  // Widget pdfView(String pathPDF){
+  //   print("pdfView");
+  //   return Scaffold(
+  //       appBar: AppBar(
+  //         title: Text("Document"),
+  //         actions: <Widget>[
+  //           IconButton(
+  //             icon: Icon(Icons.share),
+  //             onPressed: () {},
+  //           ),
+  //         ],
+  //       ),
+  //       body: SfPdfViewer.network(pathPDF.toString()),);
+  // }
   @override
   Widget build(BuildContext context) {
     index = Get.arguments;
@@ -182,17 +182,17 @@ class RemindersDetails extends StatelessWidget {
 }
 
 }
-class FullPdfViewerScreen extends StatelessWidget {
-  final String pdfPath;
+// class FullPdfViewerScreen extends StatelessWidget {
+//   final String pdfPath;
 
-  FullPdfViewerScreen(this.pdfPath);
+//   FullPdfViewerScreen(this.pdfPath);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Document"),
-        ),
-        body: SfPdfViewer.network(pdfPath));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text("Document"),
+//         ),
+//         body: SfPdfViewer.network(pdfPath));
+//   }
+// }

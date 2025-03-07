@@ -6,14 +6,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_full_pdf_viewer/full_pdf_viewer_scaffold.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+// import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+// import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 import '../constants/globals.dart';
 import '../controllers/announcements_controller.dart';
@@ -60,21 +63,21 @@ class AnnouncementsDetails extends StatelessWidget {
     }
   }
 
-  Widget pdfView(String pathPDF) {
-    print("pdfView");
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Document"),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.share),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: SfPdfViewer.network(pathPDF.toString()),
-    );
-  }
+  // Widget pdfView(String pathPDF) {
+  //   print("pdfView");
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text("Document"),
+  //       actions: <Widget>[
+  //         IconButton(
+  //           icon: Icon(Icons.share),
+  //           onPressed: () {},
+  //         ),
+  //       ],
+  //     ),
+  //     body: SfPdfViewer.network(pathPDF.toString()),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -297,17 +300,17 @@ class AnnouncementsDetails extends StatelessWidget {
 }
 }
 
-class FullPdfViewerScreen extends StatelessWidget {
-  final String pdfPath;
+// class FullPdfViewerScreen extends StatelessWidget {
+//   final String pdfPath;
 
-  FullPdfViewerScreen(this.pdfPath);
+//   FullPdfViewerScreen(this.pdfPath);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text("Document"),
-        ),
-        body: SfPdfViewer.network(pdfPath));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//         appBar: AppBar(
+//           title: Text("Document"),
+//         ),
+//         body: SfPdfViewer.network(pdfPath));
+//   }
+// }

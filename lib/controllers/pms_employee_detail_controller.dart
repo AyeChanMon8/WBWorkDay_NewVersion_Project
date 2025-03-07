@@ -28,7 +28,7 @@ class PMSEmployeeDetailController extends GetxController {
   var forceHODManagerRankingdetailModel = <PMSHODForceRankingDetailModel>[].obs;
   var showAcknowledge = true.obs;
   var showApprove = false.obs;
-  PmsListController? pmsListController;
+  late PmsListController controller;
   var totalFinalRate = 0.0.obs;
   var totalEmployeeRate = 0.0.obs;
   var totalScoreAverage = 0.0.obs;
@@ -89,7 +89,7 @@ class PMSEmployeeDetailController extends GetxController {
     getRatingConfig();
     getForceMangerRatingConfig();
     getHODRatingConfig();
-    pmsListController= Get.put(PmsListController());
+    controller= Get.put(PmsListController());
   }
 
   Future<int?> checkApproveOrNote(PMSDetailModel value) async {
@@ -187,7 +187,7 @@ class PMSEmployeeDetailController extends GetxController {
     String message = await pmsService!.sendAcknowledge(pmsId);
     if (message == 'Success') {
       Get.back();
-      var pmsList = await pmsListController!.getPmsList();
+      var pmsList = await controller!.getPmsList();
       detailModel.value = pmsList
           .where((element) => element.id == detailModel.value.id)
           .toList()[0];
@@ -244,7 +244,7 @@ class PMSEmployeeDetailController extends GetxController {
       // if (message == 'Success') {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information',content: Text(message) , onConfirm: () async {
-      //     pmsListController!.getPmsApprovalList();
+      //     controller!.getPmsApprovalList();
       //     update();
       //     // Get.back();
       //     Future.delayed(Duration(milliseconds: 500), () {
@@ -260,7 +260,7 @@ class PMSEmployeeDetailController extends GetxController {
       if (data == 'Success') {
         Get.back();
         Get.defaultDialog(title: 'Information',content: Text(data.toString()) , onConfirm: () async {
-          pmsListController!.getPmsApprovalList();
+          controller!.getPmsApprovalList();
           update();
           // Get.back();
           Future.delayed(Duration(milliseconds: 500), () {
@@ -304,7 +304,7 @@ class PMSEmployeeDetailController extends GetxController {
       // if (message == 'Success') {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  ()  {
-      //     pmsListController!.getManagerPmsApprovalList();
+      //     controller!.getManagerPmsApprovalList();
       //     update();
       //     Future.delayed(Duration(milliseconds: 500), () {
       //       Get.back();
@@ -319,11 +319,11 @@ class PMSEmployeeDetailController extends GetxController {
       if (data == 'Success') {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  ()  {
-          pmsListController!.getManagerPmsApprovalList();
+          controller!.getManagerPmsApprovalList();
           update();
           Future.delayed(Duration(milliseconds: 500), () {
-            Get.back();
-            Get.back();
+            Get.back(result: true);
+            Get.back(result: true);
           });
         });
       } 
@@ -362,7 +362,7 @@ class PMSEmployeeDetailController extends GetxController {
       // if (message == 'Success') {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
-      //     pmsListController!.getManagerPmsApprovalList();
+      //     controller!.getManagerPmsApprovalList();
       //     update();
       //     Future.delayed(Duration(milliseconds: 500), () {
       //       Get.back();
@@ -377,7 +377,7 @@ class PMSEmployeeDetailController extends GetxController {
       if (data == 'Success') {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
-          pmsListController!.getManagerPmsApprovalList();
+          controller!.getManagerPmsApprovalList();
           update();
           Future.delayed(Duration(milliseconds: 500), () {
             Get.back();
@@ -421,13 +421,13 @@ class PMSEmployeeDetailController extends GetxController {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
       //     var pmsForceManagerList =
-      //         await pmsListController!.getHODManagerPmsApprovalList();
+      //         await controller!.getHODManagerPmsApprovalList();
       //     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
       //     forceHODManagerRankingdetailModel.value = pmsForceManagerList;
       //     forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
       //         .value[detailIndex].forceRankingGroupId![forceIndex];
 
-      //     // pmsListController.getHODManagerPmsApprovalList();
+      //     // controller.getHODManagerPmsApprovalList();
       //     Future.delayed(Duration(milliseconds: 500), () {
       //       Get.back();
       //       Get.back();
@@ -437,7 +437,7 @@ class PMSEmployeeDetailController extends GetxController {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm: () async {
       //     var pmsForceManagerList =
-      //         await pmsListController!.getHODManagerPmsApprovalList();
+      //         await controller!.getHODManagerPmsApprovalList();
       //     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
       //     forceHODManagerRankingdetailModel.value = pmsForceManagerList;
       //     forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -457,13 +457,13 @@ class PMSEmployeeDetailController extends GetxController {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
           var pmsForceManagerList =
-              await pmsListController!.getHODManagerPmsApprovalList();
+              await controller!.getHODManagerPmsApprovalList();
           // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
           forceHODManagerRankingdetailModel.value = pmsForceManagerList;
           forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
               .value[detailIndex].forceRankingGroupId![forceIndex];
 
-          // pmsListController.getHODManagerPmsApprovalList();
+          // controller.getHODManagerPmsApprovalList();
           Future.delayed(Duration(milliseconds: 500), () {
             Get.back();
             Get.back();
@@ -473,7 +473,7 @@ class PMSEmployeeDetailController extends GetxController {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm: () async {
           var pmsForceManagerList =
-              await pmsListController!.getHODManagerPmsApprovalList();
+              await controller!.getHODManagerPmsApprovalList();
           // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
           forceHODManagerRankingdetailModel.value = pmsForceManagerList;
           forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -506,7 +506,7 @@ class PMSEmployeeDetailController extends GetxController {
     //   Get.back();
     //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
     //     var pmsForceManagerList =
-    //         await pmsListController!.getHODManagerPmsApprovalList();
+    //         await controller!.getHODManagerPmsApprovalList();
     //     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
     //     forceHODManagerRankingdetailModel.value = pmsForceManagerList;
     //     forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -525,7 +525,7 @@ class PMSEmployeeDetailController extends GetxController {
         Get.back();
       Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
         var pmsForceManagerList =
-            await pmsListController!.getHODManagerPmsApprovalList();
+            await controller!.getHODManagerPmsApprovalList();
         // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
         forceHODManagerRankingdetailModel.value = pmsForceManagerList;
         forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -569,7 +569,7 @@ class PMSEmployeeDetailController extends GetxController {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
       //     var pmsForceManagerList =
-      //         await pmsListController!.getHODManagerPmsApprovalList();
+      //         await controller!.getHODManagerPmsApprovalList();
       //     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
       //     forceHODManagerRankingdetailModel.value = pmsForceManagerList;
       //     forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -589,7 +589,7 @@ class PMSEmployeeDetailController extends GetxController {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
           var pmsForceManagerList =
-              await pmsListController!.getHODManagerPmsApprovalList();
+              await controller!.getHODManagerPmsApprovalList();
           // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
           forceHODManagerRankingdetailModel.value = pmsForceManagerList;
           forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -657,7 +657,7 @@ class PMSEmployeeDetailController extends GetxController {
       //       if (data == 'Success') {
       //               Get.back();
       //               Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
-      //                 pmsListController!.getPmsList();
+      //                 controller!.getPmsList();
       //                 showAcknowledge.value = false;
       //                 update();
       //                 // Get.back();
@@ -670,16 +670,28 @@ class PMSEmployeeDetailController extends GetxController {
       if(detailModel.value.state == 'acknowledge'){
         await pmsService!.sendMidYearSelfAssessment(pmsId).then((data) async{
               if (data == 'Success') {
+                  
                   Get.back();
-                            Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
-                              pmsListController!.getPmsList();
-                              showAcknowledge.value = false;
-                              update();
-                              // Get.back();
-                              Get.back();
-                              Get.back();
-                              // update();
-                            });
+                  Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
+                    //  Get.back();
+              showAcknowledge.value = false;
+              //save_btn_show.value = false;
+              controller!.offset.value = 0;
+              controller!
+                  .getPmsList()
+                  .then((value) async {
+                    Get.back();
+Get.back(result: value);
+                  } );
+                    
+                    // controller!.getPmsList();
+                    // showAcknowledge.value = false;
+                    // update();
+                    // // Get.back();
+                    // Get.back();
+                    // Get.back();
+                    // update();
+                  });
                 
               } 
             }); 
@@ -689,7 +701,7 @@ class PMSEmployeeDetailController extends GetxController {
               if (data == 'Success') {
                   Get.back();
                             Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
-                              pmsListController!.getPmsList();
+                              controller!.getPmsList();
                               showAcknowledge.value = false;
                               update();
                               // Get.back();
@@ -709,7 +721,7 @@ class PMSEmployeeDetailController extends GetxController {
     //   if (data == 'Success') {
     //       Get.back();
     //                 Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
-    //                   pmsListController!.getPmsList();
+    //                   controller!.getPmsList();
     //                   showAcknowledge.value = false;
     //                   update();
     //                   // Get.back();
@@ -729,7 +741,7 @@ class PMSEmployeeDetailController extends GetxController {
     //   if (data == 'Success') {
     //      Get.back();
     //     Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
-    //       pmsListController!.getPmsList();
+    //       controller!.getPmsList();
     //       showAcknowledge.value = false;
     //       update();
     //       // Get.back();
@@ -744,7 +756,7 @@ class PMSEmployeeDetailController extends GetxController {
   }
 
   refreshData(int index) async {
-    var pmsList = await pmsListController!.getPmsList();
+    var pmsList = await controller!.getPmsList();
     detailModel.value = pmsList
         .where((element) => element.id == detailModel.value.id)
         .toList()[0];
@@ -753,7 +765,7 @@ class PMSEmployeeDetailController extends GetxController {
   }
 
   refreshToApproveData(int index) async {
-    var pmsList = await pmsListController!.getPmsApprovalList();
+    var pmsList = await controller!.getPmsApprovalList();
     detailModel.value = pmsList
         .where((element) => element.id == detailModel.value.id)
         .toList()[0];
@@ -763,7 +775,7 @@ class PMSEmployeeDetailController extends GetxController {
 
   refreshToRankingManagerApproveData(
       dynamic index, int forceIndex, int detailIndex) async {
-    var pmsList = await pmsListController!.getManagerPmsApprovalList();
+    var pmsList = await controller!.getManagerPmsApprovalList();
     forceManagerRankingdetailModel.value = pmsList;
     forceManagerdetailModel.value = forceManagerRankingdetailModel
         .value[detailIndex].forceRankingGroupId![forceIndex];
@@ -772,7 +784,7 @@ class PMSEmployeeDetailController extends GetxController {
   refreshToRankingHODManagerApproveData(
       dynamic index, int forceIndex, int detailIndex) async {
     var pmsForceManagerList =
-        await pmsListController!.getHODManagerPmsApprovalList();
+        await controller!.getHODManagerPmsApprovalList();
     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
     forceHODManagerRankingdetailModel.value = pmsForceManagerList;
     forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -815,7 +827,7 @@ class PMSEmployeeDetailController extends GetxController {
       // if (message == 'Success') {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
-      //     var pmsList = await pmsListController!.getPmsList();
+      //     var pmsList = await controller!.getPmsList();
       //     detailModel.value = pmsList
       //         .where((element) => element.id == detailModel.value.id)
       //         .toList()[0];
@@ -844,7 +856,7 @@ class PMSEmployeeDetailController extends GetxController {
       if (data == 'Success') {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
-          var pmsList = await pmsListController!.getPmsList();
+          var pmsList = await controller!.getPmsList();
           detailModel.value = pmsList
               .where((element) => element.id == detailModel.value.id)
               .toList()[0];
@@ -911,7 +923,7 @@ class PMSEmployeeDetailController extends GetxController {
       if (data == 'Success') {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
-          var pmsList = await pmsListController!.getPmsApprovalList();
+          var pmsList = await controller!.getPmsApprovalList();
           detailModel.value = pmsList
               .where((element) => element.id == detailModel.value.id)
               .toList()[0];
@@ -940,7 +952,7 @@ class PMSEmployeeDetailController extends GetxController {
     //   if (message == 'Success') {
     //     Get.back();
     //     Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
-    //       var pmsList = await pmsListController!.getPmsApprovalList();
+    //       var pmsList = await controller!.getPmsApprovalList();
     //       detailModel.value = pmsList
     //           .where((element) => element.id == detailModel.value.id)
     //           .toList()[0];
@@ -993,7 +1005,7 @@ class PMSEmployeeDetailController extends GetxController {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information',content:  Text(message),onConfirm:  () async {
       //     var pmsForceManagerList =
-      //         await pmsListController!.getManagerPmsApprovalList();
+      //         await controller!.getManagerPmsApprovalList();
       //     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
       //     forceManagerRankingdetailModel.value = pmsForceManagerList;
       //     forceManagerdetailModel.value = forceManagerRankingdetailModel
@@ -1017,7 +1029,7 @@ class PMSEmployeeDetailController extends GetxController {
         Get.back();
         Get.defaultDialog(title: 'Information',content:  Text(data.toString()),onConfirm:  () async {
           var pmsForceManagerList =
-              await pmsListController!.getManagerPmsApprovalList();
+              await controller!.getManagerPmsApprovalList();
           // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
           forceManagerRankingdetailModel.value = pmsForceManagerList;
           forceManagerdetailModel.value = forceManagerRankingdetailModel
@@ -1073,7 +1085,7 @@ class PMSEmployeeDetailController extends GetxController {
       //   Get.back();
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm: () async {
       //     var pmsForceManagerList =
-      //         await pmsListController!.getHODManagerPmsApprovalList();
+      //         await controller!.getHODManagerPmsApprovalList();
       //     // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
       //     forceHODManagerRankingdetailModel.value = pmsForceManagerList;
       //     forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -1096,7 +1108,7 @@ class PMSEmployeeDetailController extends GetxController {
         Get.back();
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm: () async {
           var pmsForceManagerList =
-              await pmsListController!.getHODManagerPmsApprovalList();
+              await controller!.getHODManagerPmsApprovalList();
           // detailModel.value = pmsForceManagerList.where((element) => element.id == detailModel.value.id).toList()[0];
           forceHODManagerRankingdetailModel.value = pmsForceManagerList;
           forceHODManagerdetailModel.value = forceHODManagerRankingdetailModel
@@ -1126,7 +1138,7 @@ class PMSEmployeeDetailController extends GetxController {
         .then((data) {
       if (data == 'Success') {
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
-          var pmsList = await pmsListController!.getPmsApprovalList();
+          var pmsList = await controller!.getPmsApprovalList();
           detailModel.value = pmsList
               .where((element) => element.id == detailModel.value.id)
               .toList()[0];
@@ -1148,7 +1160,7 @@ class PMSEmployeeDetailController extends GetxController {
       //     detailModel.value.competenciesIds![index].comment);
       // if (message == 'Success') {
       //   Get.defaultDialog(textCancel: 'Information', content: Text(message),onConfirm:  () async {
-      //     var pmsList = await pmsListController!.getPmsApprovalList();
+      //     var pmsList = await controller!.getPmsApprovalList();
       //     detailModel.value = pmsList
       //         .where((element) => element.id == detailModel.value.id)
       //         .toList()[0];
@@ -1181,7 +1193,7 @@ class PMSEmployeeDetailController extends GetxController {
         .then((data) {
       if (data == 'Success') {
         Get.defaultDialog(title: 'Information', content: Text(data.toString()),onConfirm:  () async {
-          var pmsList = await pmsListController!.getPmsList();
+          var pmsList = await controller!.getPmsList();
           detailModel.value = pmsList
               .where((element) => element.id == detailModel.value.id)
               .toList()[0];
@@ -1204,7 +1216,7 @@ class PMSEmployeeDetailController extends GetxController {
       //     .toString();
       // if (message == 'Success') {
       //   Get.defaultDialog(title: 'Information', content: Text(message),onConfirm:  () async {
-      //     var pmsList = await pmsListController!.getPmsList();
+      //     var pmsList = await controller!.getPmsList();
       //     detailModel.value = pmsList
       //         .where((element) => element.id == detailModel.value.id)
       //         .toList()[0];
