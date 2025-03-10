@@ -1142,8 +1142,8 @@ class Date_range_id {
 
   factory Date_range_id.fromMap(Map<String, dynamic> map) {
     return new Date_range_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -1230,8 +1230,8 @@ class Comp_template_id {
 
   factory Comp_template_id.fromMap(Map<String, dynamic> map) {
     return new Comp_template_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -1318,8 +1318,8 @@ class Template_id {
 
   factory Template_id.fromMap(Map<String, dynamic> map) {
     return new Template_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 
@@ -1406,8 +1406,8 @@ class Employee_id {
 
   factory Employee_id.fromMap(Map<String, dynamic> map) {
     return new Employee_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

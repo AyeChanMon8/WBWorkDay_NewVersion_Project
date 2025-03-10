@@ -2417,8 +2417,8 @@ class ERoute_id {
 
   factory ERoute_id.fromMap(Map<String, dynamic> map) {
     return new ERoute_id(
-      id: map['id'] as int,
-      name: map['name'] as String,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
     );
   }
 

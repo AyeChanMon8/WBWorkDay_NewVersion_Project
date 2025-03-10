@@ -2800,8 +2800,8 @@ class _PlanTripDetailsState extends State<PlanTripDetails>
                             style: pmstitleStyle(),
                           )),
                           Expanded(
-                              child: Text(
-                                  AppUtils.removeNullString(fuelIn_ids.slipNo)))
+                              child: fuelIn_ids.slipNo!=null ?Text(
+                                  AppUtils.removeNullString(fuelIn_ids.slipNo)) : SizedBox())
                         ],
                       ),
                       SizedBox(
